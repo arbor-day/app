@@ -24,13 +24,13 @@
             <input type="file" />
           </td>
           <td>
-            <input type="text" name="address" v-model="form.address"/>
+            <input type="text" name="address" v-model="form.address" />
           </td>
           <td>
-            <input type="text" name="latitude" v-model="form.latitude"/>
+            <input type="text" name="latitude" v-model="form.latitude" />
           </td>
           <td>
-            <input type="text" name="longitude" v-model="form.longitude"/>
+            <input type="text" name="longitude" v-model="form.longitude" />
           </td>
           <td>
             <div class="input-radio">
@@ -43,7 +43,7 @@
             </div>
           </td>
           <td>
-            <input type="text" name="description" v-model="form.description"/>
+            <input type="text" name="description" v-model="form.description" />
           </td>
           <td>
             <button>Submit</button>
@@ -59,25 +59,28 @@
 <script>
 export default {
   name: "todo-form",
-  data(){
-    return{
-      form:{
+  data() {
+    return {
+      form: {
         photo: null,
         address: null,
         latitude: null,
         longitude: null,
         status: null,
-        description: null,
+        description: null
       }
-    }
+    };
   },
   components: {},
   computed: {},
   methods: {
     submitForm() {
       console.log(this.form);
-      const id = this.$store.state.todos.length > 0 ? this.$store.state.todos[this.$store.state.todos.length - 1].id + 1 : 0;
-      const newForm = {...this.form, id}
+      const id =
+        this.$store.state.todos.length > 0
+          ? this.$store.state.todos[this.$store.state.todos.length - 1].id + 1
+          : 0;
+      const newForm = { ...this.form, id };
       this.$store.dispatch("addTodo", newForm);
     }
   }
@@ -85,36 +88,35 @@ export default {
 </script>
 
 <style scoped lang="scss">
-p{
+p {
   text-align: left;
 }
 form {
   // padding: 0.5rem;
-  font-size:0.7rem;
+  font-size: 0.7rem;
   margin-bottom: 2rem;
 }
 
 input {
-  width:100%;
+  width: 100%;
 }
 
-table{
+table {
   border: 1px solid black;
   box-shadow: 4px 4px 0px black;
 
-  th{
+  th {
     // background-color:rgba(0,0,0,0.5);
-    border-bottom:1px solid black;
+    border-bottom: 1px solid black;
   }
 
-  tr:nth-child(odd){
-    background-color:rgba(0,0,0, 0.1);
+  tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
-  td{
-    padding:0.4rem;
-    font-size:0.7rem;
+  td {
+    padding: 0.4rem;
+    font-size: 0.7rem;
   }
 }
-
 </style>

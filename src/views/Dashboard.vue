@@ -1,13 +1,12 @@
 <template>
   <div id="dashboard">
-    
     <!-- map view -->
-    <MapView/>
+    <MapView />
 
     <!-- table view -->
     <div class="table">
-      <TodoForm/>
-      <TodoList/>
+      <TodoForm />
+      <TodoList />
     </div>
   </div>
 </template>
@@ -22,20 +21,18 @@ export default {
   components: {
     MapView,
     TodoForm,
-    TodoList,
+    TodoList
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
-
-#dashboard{
-  height:100%;
-  width:100%;
-  display:grid;
+#dashboard {
+  height: 100%;
+  width: 100%;
+  display: grid;
   grid-template-columns: 3fr 1fr;
   grid-column-gap: 20px;
-  padding:2rem;
+  padding: 2rem;
 }
-
 </style>
