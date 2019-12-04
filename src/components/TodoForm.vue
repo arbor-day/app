@@ -75,7 +75,7 @@ export default {
   computed: {},
   methods: {
     submitForm() {
-      console.log(this.form);
+      // console.log(this.form);
       const id =
         this.$store.state.todos.length > 0
           ? this.$store.state.todos[this.$store.state.todos.length - 1].id + 1
