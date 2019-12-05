@@ -11,7 +11,7 @@ export default {
   name: 'map-view',
   methods:{},
   mounted() {
-    this.$store.commit('initMap', 'map-view');
+    this.$store.dispatch('initMap', 'map-view');
   }
 };
 </script>

@@ -27,7 +27,9 @@ export default new Vuex.Store({
     todoMarkers: state => {
       const myPoints = turf.featureCollection(
         state.todos.map(item =>
-          turf.point([item.longitude, item.latitude], { ...item })
+          turf.point([item.longitude, item.latitude], {
+            ...item
+          })
         )
       );
       return myPoints;
@@ -41,17 +43,10 @@ export default new Vuex.Store({
     removeTodo(state, id) {
       state.todos = state.todos.filter(item => item.id !== id);
     },
-    initMap(state, mapId) {
-      mapboxgl.accessToken =
-        "pk.eyJ1Ijoiam9leWtsZWUiLCJhIjoiMlRDV2lCSSJ9.ZmGAJU54Pa-z8KvwoVXVBw";
-
-      state.geo = new mapboxgl.Map({
-        container: mapId,
-        style: "mapbox://styles/mapbox/streets-v11",
-        center: [-73.975866, 40.676966], // starting position [lng, lat]
-        zoom: 9 // starting zoom
-      });
-
+    initMap(state, geo) {
+      state.geo = geo;
+    },
+    addMapLayers(state) {
       state.geo.on("load", () => {
         state.geo.addSource("todo-locations", {
           type: "geojson",
@@ -85,6 +80,20 @@ export default new Vuex.Store({
       // console.log("remove todo");
       context.commit("removeTodo", id);
       context.commit("updatePoints");
+    },
+    async initMap(context, mapId) {
+      mapboxgl.accessToken =
+        "pk.eyJ1Ijoiam9leWtsZWUiLCJhIjoiMlRDV2lCSSJ9.ZmGAJU54Pa-z8KvwoVXVBw";
+
+      const map = new mapboxgl.Map({
+        container: mapId,
+        style: "mapbox://styles/mapbox/streets-v11",
+        center: [-73.975866, 40.676966], // starting position [lng, lat]
+        zoom: 9 // starting zoom
+      });
+
+      context.commit("initMap", map);
+      context.commit("addMapLayers");
     }
   },
   modules: {}
