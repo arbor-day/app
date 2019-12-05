@@ -85,6 +85,10 @@ export default {
           : 0;
       const newForm = { ...this.form, id };
       this.$store.dispatch("addTodo", newForm);
+
+      Object.keys(this.form).forEach(k => {
+        this.form[k] = null
+      })
     },
     getMapCenter(){
       this.$store.commit("getMapCenter");

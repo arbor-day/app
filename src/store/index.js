@@ -44,6 +44,11 @@ export default new Vuex.Store({
     addTodo(state, todo) {
       state.todos = [...state.todos, todo];
     },
+    editTodo(state, updatedTodo) {
+      state.todos = state.todos.map(item => {
+        return item.id === updatedTodo.id ? updatedTodo : item;
+      });
+    },
     removeTodo(state, id) {
       state.todos = state.todos.filter(item => item.id !== id);
     },
@@ -81,6 +86,11 @@ export default new Vuex.Store({
     async addTodo(context, todo) {
       // console.log("add todo");
       context.commit("addTodo", todo);
+      context.commit("updatePoints");
+    },
+    async editTodo(context, updatedTodo) {
+      // console.log("add todo");
+      context.commit("editTodo", updatedTodo);
       context.commit("updatePoints");
     },
     async removeTodo(context, id) {
