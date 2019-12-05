@@ -31,8 +31,16 @@ export default {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-column-gap: 20px;
-  padding: 2rem;
+  padding: 1rem;
+}
+
+.table{
+  width:100%;
+  height:100%;
+  display: grid;
+  grid-template-rows: 6rem calc(100vh - 11.25rem);
+  grid-row-gap: 20px;
 }
 </style>

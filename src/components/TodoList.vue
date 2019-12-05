@@ -14,11 +14,9 @@
         <tr v-for="todo in this.todos" v-bind:key="todo.id">
           <!--  -->
           <td v-if="editing === todo.id">
-            <input type="file">
+            <input type="file" />
           </td>
-          <td v-else>
-            {{ todo.photo }}
-          </td>
+          <td v-else>{{ todo.photo }}</td>
           <!--  -->
           <td v-if="editing === todo.id">
             <input type="text" name="address" v-model="todo.address" />
@@ -60,11 +58,11 @@
 export default {
   name: "todo-list",
   components: {},
-  data(){
+  data() {
     return {
-      editing:null,
-      cachedTodo:null
-    }
+      editing: null,
+      cachedTodo: null
+    };
   },
   computed: {
     todos() {
@@ -72,17 +70,17 @@ export default {
     }
   },
   methods: {
-    editMode(todo){
+    editMode(todo) {
       this.cachedTodo = Object.assign({}, todo);
-      this.editing = todo.id
+      this.editing = todo.id;
     },
-    editTodo(todo){
+    editTodo(todo) {
       this.$store.dispatch("editTodo", todo.id, todo);
-      this.editing = null
+      this.editing = null;
     },
-    cancelEdit(todo){
+    cancelEdit(todo) {
       Object.assign(todo, this.cachedTodo);
-      this.editing = null
+      this.editing = null;
     },
     removeTodo(id) {
       return this.$store.dispatch("removeTodo", id);
@@ -92,13 +90,24 @@ export default {
 </script>
 
 <style scoped lang="scss">
-table {
+#todo-list {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
   border: 1px solid black;
   box-shadow: 4px 4px 0px black;
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+  
 
   th {
-    // background-color:rgba(0,0,0,0.5);
     border-bottom: 1px solid black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   tr:nth-child(odd) {
@@ -107,7 +116,10 @@ table {
 
   td {
     padding: 0.4rem;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
+    // white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
   }
 }
 input {

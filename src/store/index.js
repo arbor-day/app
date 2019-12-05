@@ -2,22 +2,13 @@ import Vue from "vue";
 import Vuex from "vuex";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 import * as turf from "@turf/turf";
+import todosArray from '../assets/sample.js'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    todos: [
-      {
-        id: 1,
-        photo: "tree.jpg",
-        address: "152 St Johns Place, Brooklyn, NY",
-        latitude: 40.676966,
-        longitude: -73.975866,
-        status: "incomplete",
-        description: "an empty spot on the sidewalk"
-      }
-    ],
+    todos: todosArray,
     geo: null,
     map:{
       center:null,
@@ -67,8 +58,9 @@ export default new Vuex.Store({
           type: "circle",
           source: "todo-locations",
           paint: {
-            "circle-radius": 10,
-            "circle-color": "#ff0000"
+            "circle-radius": 4,
+            "circle-color": "#ff0000",
+            "circle-stroke-color": "#ffff00"
           }
         });
       });

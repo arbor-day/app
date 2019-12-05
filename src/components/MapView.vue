@@ -6,7 +6,8 @@
 
 // import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 // import * as turf from '@turf/turf';
-
+// mapview is structured
+// based on https://stackoverflow.com/questions/41308177/how-to-setup-a-centralized-state-for-a-mapbox-map-in-vuex
 export default {
   name: 'map-view',
   methods:{},

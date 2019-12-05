@@ -106,7 +106,6 @@ p {
 form {
   // padding: 0.5rem;
   font-size: 0.7rem;
-  margin-bottom: 2rem;
 }
 
 input {
@@ -116,7 +115,6 @@ input {
 table {
   border: 1px solid black;
   box-shadow: 4px 4px 0px black;
-
   th {
     // background-color:rgba(0,0,0,0.5);
     border-bottom: 1px solid black;
