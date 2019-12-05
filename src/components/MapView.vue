@@ -17,7 +17,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #map-view {
   width: 100%;
   height: 100%;

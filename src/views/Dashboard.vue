@@ -1,13 +1,18 @@
 <template>
   <div id="dashboard">
+    <section class="dashboard__titles">
+      <h3>Tree Planting Opportunity Map</h3>
+      <h3>Add trees to the map</h3>
+    </section>
+    <section class="dashboard__main">
     <!-- map view -->
     <MapView />
-
     <!-- table view -->
     <div class="table">
       <TodoForm />
       <TodoList />
     </div>
+    </section>
   </div>
 </template>
 
@@ -30,10 +35,26 @@ export default {
 #dashboard {
   height: 100%;
   width: 100%;
+  grid-template-rows: auto 1fr;
+}
+
+.dashboard__titles{
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 20px;
-  padding: 1rem;
+  text-align:left;
+  h3{font-size:1rem;}
+}
+
+.dashboard__main{
+  height: 100%;
+  max-height: calc(100% - 3rem);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+  // padding: 0 1rem;
 }
 
 .table{

@@ -35,9 +35,10 @@ body {
 }
 
 #app {
+  padding:1rem;
   height: 100%;
   display: grid;
-  grid-template-rows: 2rem 1fr;
+  grid-template-rows: auto 1fr;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

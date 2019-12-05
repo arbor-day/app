@@ -1,13 +1,6 @@
 <template>
   <div id="todo-form">
-    <!-- 
-        Photo
-        Address
-        Latitude
-        Longitude
-        Status 
-        neighborhood - dropdown
-    -->
+    
     <!-- <p>Add an entry</p> -->
     <form @submit.prevent="submitForm">
       <table>
