@@ -29,9 +29,11 @@
           </td>
           <td>
             <input type="text" name="latitude" v-model="form.latitude" />
+            <button @click.prevent="getMapCenter">get coords</button>
           </td>
           <td>
             <input type="text" name="longitude" v-model="form.longitude" />
+            <button @click.prevent="getMapCenter">get coords</button>
           </td>
           <td>
             <div class="input-radio">
@@ -83,7 +85,12 @@ export default {
           : 0;
       const newForm = { ...this.form, id };
       this.$store.dispatch("addTodo", newForm);
-    }
+    },
+    getMapCenter(){
+      this.$store.commit("getMapCenter");
+      this.form.longitude = this.$store.state.map.center.lng;
+      this.form.latitude = this.$store.state.map.center.lat;
+    },
   }
 };
 </script>

@@ -18,7 +18,11 @@ export default new Vuex.Store({
         description: "an empty spot on the sidewalk"
       }
     ],
-    geo: null
+    geo: null,
+    map:{
+      center:null,
+      zoom: null
+    }
   },
   getters: {
     todos: state => {
@@ -68,6 +72,9 @@ export default new Vuex.Store({
       if (state.geo !== null && state.geo.loaded()) {
         state.geo.getSource("todo-locations").setData(this.getters.todoMarkers);
       }
+    },
+    getMapCenter(state){
+      state.map.center = state.geo.getCenter();
     }
   },
   actions: {
