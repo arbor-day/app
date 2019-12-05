@@ -8,7 +8,7 @@
         Status 
         neighborhood - dropdown
     -->
-    <p>Add an entry</p>
+    <!-- <p>Add an entry</p> -->
     <form @submit.prevent="submitForm">
       <table>
         <thead>
