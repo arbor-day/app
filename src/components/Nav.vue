@@ -3,7 +3,9 @@
     <div class="nav__logo">
       <router-link to="/">Everyday, Arbor Day</router-link>  
     </div>
+    
     <div class="nav__links">
+    <router-link to="/login">Login/Signup</router-link>
     <router-link to="/">Home</router-link>
     <router-link to="/about">About</router-link>
     <router-link to="/dashboard">Dashboard</router-link>
