@@ -61,7 +61,7 @@ export default {
         
         result = await result.json();
         
-        if(result.username){
+        if(result.token){
           alert('login successful')
           Router.push({ path: 'home' })
         } else {
