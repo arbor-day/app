@@ -176,7 +176,10 @@ export default new Vuex.Store({
       );
 
       result = await result.json();
-      console.log(result);
+      
+      if(result.status === 'success'){
+        alert(result.message);
+      }
     },
     async resetPassword(context, data) {
       const options = {
