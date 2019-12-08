@@ -2,20 +2,30 @@ import Vue from "vue";
 import Vuex from "vuex";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 import * as turf from "@turf/turf";
-import todosArray from '../assets/sample.js'
+import todosArray from "../assets/sample.js";
+import Router from "../router";
 
 Vue.use(Vuex);
+
+const BASE_URL = "http://localhost:3030";
 
 export default new Vuex.Store({
   state: {
     todos: todosArray,
     geo: null,
-    map:{
-      center:null,
+    map: {
+      center: null,
       zoom: null
+    },
+    user: {
+      username: null,
+      authd: false
     }
   },
   getters: {
+    isAuthd: state => {
+      return state.user.authd;
+    },
     todos: state => {
       return state.todos;
     },
@@ -43,6 +53,7 @@ export default new Vuex.Store({
     removeTodo(state, id) {
       state.todos = state.todos.filter(item => item.id !== id);
     },
+    // map
     initMap(state, geo) {
       state.geo = geo;
     },
@@ -70,8 +81,15 @@ export default new Vuex.Store({
         state.geo.getSource("todo-locations").setData(this.getters.todoMarkers);
       }
     },
-    getMapCenter(state){
+    getMapCenter(state) {
       state.map.center = state.geo.getCenter();
+    },
+    // user
+    setUsername(state, username) {
+      state.user.username = username;
+    },
+    setAuthd(state, authState) {
+      state.user.authd = authState;
     }
   },
   actions: {
@@ -103,6 +121,86 @@ export default new Vuex.Store({
 
       context.commit("initMap", map);
       context.commit("addMapLayers");
+    },
+    // user
+    async login(context, data) {
+      try {
+        const options = {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          credentials: "include",
+          body: JSON.stringify(data)
+        };
+
+        let result = await fetch(`${BASE_URL}/api/v1/users/login`, options);
+
+        result = await result.json();
+        console.log(result);
+
+        if (result.token) {
+          alert("login successful");
+
+          context.commit("setAuthd", true);
+          context.commit("setUsername", result.user.username);
+
+          Router.push({ path: "home" });
+        } else {
+          alert("login unsuccesful");
+
+          context.commit("setAuthd", false);
+          context.commit("setUsername", null);
+
+          Router.push({ path: "login" });
+        }
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
+    async forgotPassword(context, data) {
+      const options = {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify(data)
+      };
+
+      let result = await fetch(
+        `${BASE_URL}/api/v1/users/auth/forgot_password`,
+        options
+      );
+
+      result = await result.json();
+      console.log(result);
+    },
+    async resetPassword(context, data) {
+      const options = {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify(data)
+      };
+
+      let result = await fetch(
+        `${BASE_URL}/api/v1/users/auth/reset_password`,
+        options
+      );
+
+      result = await result.json();
+
+      if (result.status === "success") {
+        Router.push({ path: "login" });
+      } else {
+        alert("password reset unsuccessful");
+      }
     }
   },
   modules: {}

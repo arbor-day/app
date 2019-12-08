@@ -5,7 +5,7 @@
     </div>
     
     <div class="nav__links">
-    <router-link to="/login">Login/Signup</router-link>
+    <router-link to="/login">Login/Register</router-link>
     <router-link to="/">Home</router-link>
     <router-link to="/about">About</router-link>
     <router-link to="/dashboard">Dashboard</router-link>
