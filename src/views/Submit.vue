@@ -1,7 +1,9 @@
 <template>
   
-
   <div id="submit">
+    <router-link to="/submit?quick=true">Quick Submit</router-link> | 
+    <router-link to="/submit">normal Submit</router-link>
+    <!-- quick -->
     <div v-if="quick" class="submit__quick">
       <video ref="myvideo" src="#" width="300px" height="300px" autoplay></video>
       <form @submit.prevent="submitForm" class="submit__form">
@@ -13,7 +15,7 @@
         <input type="text" name="description" v-model="description">
         <button>submit!</button>
       </form>
-      
+    <!-- normal form -->
     </div>
     <div v-else>
       <p>form</p>
