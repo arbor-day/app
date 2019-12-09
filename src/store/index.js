@@ -345,7 +345,8 @@ export default new Vuex.Store({
         }
       } catch (error) {
         // throw new Error(error);
-        console.log("not logged in");
+        // console.log("not logged in");
+        return;
       }
     }
   },
