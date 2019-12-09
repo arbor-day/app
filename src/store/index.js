@@ -229,7 +229,10 @@ export default new Vuex.Store({
           body: JSON.stringify({})
         };
 
-        let result = await fetch(`${API_BASE_URL}/api/v1/users/me/logout`, options);
+        let result = await fetch(
+          `${API_BASE_URL}/api/v1/users/me/logout`,
+          options
+        );
         result = await result.json();
 
         if (result.status === "success") {
