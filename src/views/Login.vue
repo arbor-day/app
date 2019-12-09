@@ -36,14 +36,14 @@ export default {
     };
   },
   methods: {
-    submitForm() {
+    async submitForm() {
       try {
         const data = {
           email: this.email,
           password: this.pass
         };
 
-        return this.$store.dispatch('login', data)
+        return this.$store.dispatch('login', data)      
 
       } catch (err) {
         throw new Error(err)

@@ -5,7 +5,12 @@
     </div>
     
     <div class="nav__links">
-    <router-link to="/login">Login/Register</router-link>
+    
+    <div class="nav__links--authd" v-if="isAuthd">
+      <p>welcome {{this.$store.state.user.username}}</p> |
+      <button @click.prevent="logout">logout</button>
+    </div>
+    <router-link v-else  to="/login">Login/Register</router-link>
     <router-link to="/">Home</router-link>
     <router-link to="/about">About</router-link>
     <router-link to="/dashboard">Dashboard</router-link>
@@ -15,7 +20,17 @@
 
 <script>
 export default {
-  name: "navbar"
+  name: "navbar",
+  computed:{
+    isAuthd(){
+      return this.$store.getters.isAuthd
+    }
+  },
+  methods:{
+    logout(){
+      return this.$store.dispatch('logout');
+    }
+  }
 };
 </script>
 
@@ -28,6 +43,24 @@ export default {
   .nav__logo{
     margin-right:2rem;    
   }
+
+  .nav__links--authd, p {
+    display:inline;
+    font-weight: bold;
+    color: #2c3e50;
+    font-size:0.8rem;
+    text-decoration:none;
+
+    button{
+      margin: 0 1rem 0 0;
+      background:none;
+      border:none;
+    color: #2c3e50;
+    font-size:0.8rem;
+    }
+  }
+
+  
 
   a {
     font-weight: bold;

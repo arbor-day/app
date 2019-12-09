@@ -138,7 +138,6 @@ export default new Vuex.Store({
         let result = await fetch(`${BASE_URL}/api/v1/users/login`, options);
 
         result = await result.json();
-        console.log(result);
 
         if (result.token) {
           alert("login successful");
@@ -146,14 +145,14 @@ export default new Vuex.Store({
           context.commit("setAuthd", true);
           context.commit("setUsername", result.user.username);
 
-          Router.push({ path: "home" });
+          Router.push({ path: "/" });
         } else {
           alert("login unsuccesful");
 
           context.commit("setAuthd", false);
           context.commit("setUsername", null);
 
-          Router.push({ path: "login" });
+          Router.push({ path: "/" });
         }
       } catch (err) {
         throw new Error(err);
@@ -176,8 +175,8 @@ export default new Vuex.Store({
       );
 
       result = await result.json();
-      
-      if(result.status === 'success'){
+
+      if (result.status === "success") {
         alert(result.message);
       }
     },
@@ -203,6 +202,32 @@ export default new Vuex.Store({
         Router.push({ path: "login" });
       } else {
         alert("password reset unsuccessful");
+      }
+    },
+    async logout(context) {
+      try {
+        const options = {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          credentials: "include",
+          body: JSON.stringify({})
+        };
+
+        let result = await fetch(`${BASE_URL}/api/v1/users/me/logout`, options);
+        result = await result.json();
+
+        if (result.status === "success") {
+          context.commit("setUsername", null);
+          context.commit("setAuthd", false);
+          Router.push({ path: "/" });
+        } else {
+          alert("logout incomplete / error occured!");
+        }
+      } catch (err) {
+        throw new Error(err);
       }
     }
   },
