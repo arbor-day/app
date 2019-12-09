@@ -7,7 +7,7 @@ import Router from "../router";
 
 Vue.use(Vuex);
 
-const BASE_URL = "http://localhost:3030";
+const API_BASE_URL = process.env.VUE_APP_API_BASE_URL;
 
 export default new Vuex.Store({
   state: {
@@ -105,7 +105,7 @@ export default new Vuex.Store({
         body: JSON.stringify(data)
       };
 
-      let result = await fetch(`${BASE_URL}/api/v1/locations`, options);
+      let result = await fetch(`${API_BASE_URL}/api/v1/locations`, options);
       result = await result.json();
 
       context.commit("addTodo", result);
@@ -148,7 +148,7 @@ export default new Vuex.Store({
           body: JSON.stringify(data)
         };
 
-        let result = await fetch(`${BASE_URL}/api/v1/users/login`, options);
+        let result = await fetch(`${API_BASE_URL}/api/v1/users/login`, options);
 
         result = await result.json();
 
@@ -183,7 +183,7 @@ export default new Vuex.Store({
       };
 
       let result = await fetch(
-        `${BASE_URL}/api/v1/users/auth/forgot_password`,
+        `${API_BASE_URL}/api/v1/users/auth/forgot_password`,
         options
       );
 
@@ -205,7 +205,7 @@ export default new Vuex.Store({
       };
 
       let result = await fetch(
-        `${BASE_URL}/api/v1/users/auth/reset_password`,
+        `${API_BASE_URL}/api/v1/users/auth/reset_password`,
         options
       );
 
@@ -229,7 +229,7 @@ export default new Vuex.Store({
           body: JSON.stringify({})
         };
 
-        let result = await fetch(`${BASE_URL}/api/v1/users/me/logout`, options);
+        let result = await fetch(`${API_BASE_URL}/api/v1/users/me/logout`, options);
         result = await result.json();
 
         if (result.status === "success") {
