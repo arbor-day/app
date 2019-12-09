@@ -93,9 +93,22 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async addTodo(context, todo) {
+    async addTodo(context, data) {
       // console.log("add todo");
-      context.commit("addTodo", todo);
+      const options = {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify(data)
+      };
+
+      let result = await fetch(`${BASE_URL}/api/v1/locations`, options);
+      result = await result.json();
+
+      context.commit("addTodo", result);
       context.commit("updatePoints");
     },
     async editTodo(context, updatedTodo) {

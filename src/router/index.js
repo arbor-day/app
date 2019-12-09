@@ -5,6 +5,7 @@ import Dashboard from "../views/Dashboard.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import ResetPassword from "../views/ResetPassword";
+import Submit from "../views/Submit";
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,11 @@ const routes = [
     path: "/reset_password",
     name: "reset-password",
     component: ResetPassword
+  },
+  {
+    path: "/submit",
+    name: "submit",
+    component: Submit
   },
   {
     path: "/",
