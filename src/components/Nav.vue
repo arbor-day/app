@@ -31,6 +31,9 @@ export default {
     logout(){
       return this.$store.dispatch('logout');
     }
+  },
+  mounted(){
+    return this.$store.dispatch('checkAuth');
   }
 };
 </script>

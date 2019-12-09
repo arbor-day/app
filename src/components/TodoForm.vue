@@ -2,42 +2,42 @@
   <div id="todo-form">
     
     <!-- <p>Add an entry</p> -->
-    <form @submit.prevent="submitForm">
+    <form ref="submitForm" @submit.prevent="submitForm">
       <table>
         <thead>
           <th>Photo</th>
-          <th>Address</th>
+          <th>Address <button @click.prevent="getMapCenter">⌖</button></th>
           <th>Latitude</th>
           <th>Longitude</th>
-          <th>Status</th>
+          <!-- <th>Status</th> -->
           <th>Description</th>
           <th>Submit</th>
         </thead>
         <tbody>
           <td>
-            <input type="file" />
+            <!-- <input type="file" /> -->
+            <p>not yet supported</p>
           </td>
           <td>
             <input type="text" name="address" v-model="form.address" />
           </td>
           <td>
             <input type="text" name="latitude" v-model="form.latitude" />
-            <button @click.prevent="getMapCenter">get coords</button>
           </td>
           <td>
             <input type="text" name="longitude" v-model="form.longitude" />
-            <button @click.prevent="getMapCenter">get coords</button>
+            
           </td>
-          <td>
+          <!-- <td>
             <div class="input-radio">
-              <input type="radio" id name="todo-complete" value />
+              <input type="radio" name="todoStatus" value="complete" />
               <label for="todo-complete">complete</label>
             </div>
             <div class="input-radio">
-              <input type="radio" id name="todo-incomplete" value />
+              <input type="radio" name="todoStatus" value="incomplete" />
               <label for="todo-incomplete">incomplete</label>
             </div>
-          </td>
+          </td> -->
           <td>
             <input type="text" name="description" v-model="form.description" />
           </td>
@@ -72,11 +72,11 @@ export default {
   methods: {
     submitForm() {
       // console.log(this.form);
-      const id =
-        this.$store.state.todos.length > 0
-          ? this.$store.state.todos[this.$store.state.todos.length - 1].id + 1
-          : 0;
-      const newForm = { ...this.form, id };
+      // const id =
+      //   this.$store.state.todos.length > 0
+      //     ? this.$store.state.todos[this.$store.state.todos.length - 1].id + 1
+      //     : 0;
+      const newForm = { ...this.form};
       this.$store.dispatch("addTodo", newForm);
 
       Object.keys(this.form).forEach(k => {
@@ -121,5 +121,6 @@ table {
     padding: 0.4rem;
     font-size: 0.7rem;
   }
+
 }
 </style>

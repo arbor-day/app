@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 import * as turf from "@turf/turf";
-import todosArray from "../assets/sample.js";
+// import todosArray from "../assets/sample.js";
 import Router from "../router";
 
 Vue.use(Vuex);
@@ -11,7 +11,7 @@ const API_BASE_URL = process.env.VUE_APP_API_BASE_URL;
 
 export default new Vuex.Store({
   state: {
-    todos: todosArray,
+    todos: [],
     geo: null,
     map: {
       center: null,
@@ -42,16 +42,19 @@ export default new Vuex.Store({
   },
 
   mutations: {
+    setTodos(state, todos) {
+      state.todos = [...state.todos, ...todos];
+    },
     addTodo(state, todo) {
       state.todos = [...state.todos, todo];
     },
     editTodo(state, updatedTodo) {
       state.todos = state.todos.map(item => {
-        return item.id === updatedTodo.id ? updatedTodo : item;
+        return item._id === updatedTodo._id ? updatedTodo : item;
       });
     },
     removeTodo(state, id) {
-      state.todos = state.todos.filter(item => item.id !== id);
+      state.todos = state.todos.filter(item => item._id !== id);
     },
     // map
     initMap(state, geo) {
@@ -93,33 +96,98 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    async getTodos(context) {
+      try {
+        let result = await fetch(`${API_BASE_URL}/api/v1/locations`);
+        result = await result.json();
+
+        context.commit("setTodos", result);
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
     async addTodo(context, data) {
       // console.log("add todo");
-      const options = {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        credentials: "include",
-        body: JSON.stringify(data)
-      };
+      try {
+        const options = {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          credentials: "include",
+          body: JSON.stringify(data)
+        };
 
-      let result = await fetch(`${API_BASE_URL}/api/v1/locations`, options);
-      result = await result.json();
+        let result = await fetch(`${API_BASE_URL}/api/v1/locations`, options);
+        result = await result.json();
 
-      context.commit("addTodo", result);
-      context.commit("updatePoints");
+        context.commit("addTodo", result);
+        context.commit("updatePoints");
+      } catch (error) {
+        throw new Error(error);
+      }
     },
     async editTodo(context, updatedTodo) {
-      // console.log("add todo");
-      context.commit("editTodo", updatedTodo);
-      context.commit("updatePoints");
+      try {
+        const id = updatedTodo._id;
+
+        const options = {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          credentials: "include",
+          body: JSON.stringify(updatedTodo)
+        };
+
+        let result = await fetch(
+          `${API_BASE_URL}/api/v1/locations/${id}`,
+          options
+        );
+        result = await result.json();
+
+        if (result.status === "success") {
+          alert("feature successfully updated");
+          context.commit("editTodo", result.data);
+          context.commit("updatePoints");
+        } else {
+          alert("error editing feature");
+        }
+      } catch (error) {
+        throw new Error(error);
+      }
     },
     async removeTodo(context, id) {
-      // console.log("remove todo");
-      context.commit("removeTodo", id);
-      context.commit("updatePoints");
+      try {
+        // console.log("remove todo");
+        const options = {
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          credentials: "include"
+          // body: JSON.stringify(data)
+        };
+
+        let result = await fetch(
+          `${API_BASE_URL}/api/v1/locations/${id}`,
+          options
+        );
+        result = await result.json();
+
+        if (result.status === "success") {
+          alert("feature successfully deleted");
+          context.commit("removeTodo", id);
+          context.commit("updatePoints");
+        } else {
+          alert("error deleting feature");
+        }
+      } catch (error) {
+        throw new Error(error);
+      }
     },
     async initMap(context, mapId) {
       mapboxgl.accessToken =
@@ -158,14 +226,18 @@ export default new Vuex.Store({
           context.commit("setAuthd", true);
           context.commit("setUsername", result.user.username);
 
-          Router.push({ path: "/" });
+          Router.push({
+            path: "/"
+          });
         } else {
           alert("login unsuccesful");
 
           context.commit("setAuthd", false);
           context.commit("setUsername", null);
 
-          Router.push({ path: "/" });
+          Router.push({
+            path: "/"
+          });
         }
       } catch (err) {
         throw new Error(err);
@@ -212,7 +284,9 @@ export default new Vuex.Store({
       result = await result.json();
 
       if (result.status === "success") {
-        Router.push({ path: "login" });
+        Router.push({
+          path: "login"
+        });
       } else {
         alert("password reset unsuccessful");
       }
@@ -238,12 +312,40 @@ export default new Vuex.Store({
         if (result.status === "success") {
           context.commit("setUsername", null);
           context.commit("setAuthd", false);
-          Router.push({ path: "/" });
+          Router.push({
+            path: "/"
+          });
         } else {
           alert("logout incomplete / error occured!");
         }
       } catch (err) {
         throw new Error(err);
+      }
+    },
+    async checkAuth(context) {
+      try {
+        const options = {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          credentials: "include"
+        };
+
+        let result = await fetch(`${API_BASE_URL}/api/v1/users/me`, options);
+        result = await result.json();
+
+        if (result.status === "success") {
+          context.commit("setAuthd", true);
+          context.commit("setUsername", result.username);
+        } else {
+          context.commit("setAuthd", false);
+          context.commit("setUsername", null);
+        }
+      } catch (error) {
+        // throw new Error(error);
+        console.log("not logged in");
       }
     }
   },

@@ -27,6 +27,9 @@ export default {
     MapView,
     TodoForm,
     TodoList
+  },
+  mounted(){
+    return this.$store.dispatch('getTodos')
   }
 };
 </script>

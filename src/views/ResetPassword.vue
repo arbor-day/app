@@ -73,7 +73,6 @@ export default {
         newPassword: this.newPassword
       };
 
-      console.log(data)
       this.$store.dispatch("resetPassword", data);
     }
   }
