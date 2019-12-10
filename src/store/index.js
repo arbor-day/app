@@ -264,7 +264,7 @@ export default new Vuex.Store({
 
         if (result.token) {
           alert("signup successful");
-          Router.push({ path: "/" });
+          Router.push({ path: "/login" });
         } else {
           alert("signup unsuccesful");
           Router.push({ path: "/signup" });
