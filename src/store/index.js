@@ -328,7 +328,8 @@ export default new Vuex.Store({
           method: "GET",
           headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            Origin: "https://focused-snyder-f15e2e.netlify.com"
           },
           credentials: "include"
         };
