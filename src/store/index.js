@@ -330,7 +330,7 @@ export default new Vuex.Store({
             Accept: "application/json",
             "Content-Type": "application/json"
           },
-          credentials: "include"
+          // credentials: "include"
         };
 
         let result = await fetch(`${API_BASE_URL}/api/v1/users/me`, options);
