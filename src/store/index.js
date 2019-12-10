@@ -115,7 +115,7 @@ export default new Vuex.Store({
             Accept: "application/json",
             "Content-Type": "application/json"
           },
-          // credentials: "include",
+          credentials: "include",
           body: JSON.stringify(data)
         };
 
@@ -138,7 +138,7 @@ export default new Vuex.Store({
             Accept: "application/json",
             "Content-Type": "application/json"
           },
-          // credentials: "include",
+          credentials: "include",
           body: JSON.stringify(updatedTodo)
         };
 
@@ -168,7 +168,7 @@ export default new Vuex.Store({
             Accept: "application/json",
             "Content-Type": "application/json"
           },
-          // credentials: "include"
+          credentials: "include"
           // body: JSON.stringify(data)
         };
 
@@ -212,7 +212,7 @@ export default new Vuex.Store({
             Accept: "application/json",
             "Content-Type": "application/json"
           },
-          // credentials: "include",
+          credentials: "include",
           body: JSON.stringify(data)
         };
 
@@ -250,7 +250,7 @@ export default new Vuex.Store({
           Accept: "application/json",
           "Content-Type": "application/json"
         },
-        // credentials: "include",
+        credentials: "include",
         body: JSON.stringify(data)
       };
 
@@ -272,7 +272,7 @@ export default new Vuex.Store({
           Accept: "application/json",
           "Content-Type": "application/json"
         },
-        // credentials: "include",
+        credentials: "include",
         body: JSON.stringify(data)
       };
 
@@ -299,7 +299,7 @@ export default new Vuex.Store({
             Accept: "application/json",
             "Content-Type": "application/json"
           },
-          // credentials: "include",
+          credentials: "include",
           body: JSON.stringify({})
         };
 
@@ -330,7 +330,7 @@ export default new Vuex.Store({
             Accept: "application/json",
             "Content-Type": "application/json"
           },
-          // credentials: "include"
+          credentials: "include"
         };
 
         let result = await fetch(`${API_BASE_URL}/api/v1/users/me`, options);
