@@ -43,7 +43,7 @@ export default new Vuex.Store({
 
   mutations: {
     setTodos(state, todos) {
-      state.todos = [...state.todos, ...todos];
+      state.todos = todos;
     },
     addTodo(state, todo) {
       state.todos = [...state.todos, todo];
