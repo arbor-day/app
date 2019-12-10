@@ -11,7 +11,9 @@
         <div>
           <label>password</label>
           <input type="password" name="password" v-model="pass" />
-          <router-link class="forgot-password" to="/reset_password">forgot password</router-link>
+          <router-link class="forgot-password" to="/reset_password"
+            >forgot password</router-link
+          >
         </div>
         <div>
           <button>Login</button>
@@ -26,7 +28,7 @@
 </template>
 
 <script>
-export default {  
+export default {
   name: "login",
   data() {
     return {
@@ -42,10 +44,9 @@ export default {
           password: this.pass
         };
 
-        return this.$store.dispatch('login', data)      
-
+        return this.$store.dispatch("login", data);
       } catch (err) {
-        throw new Error(err)
+        throw new Error(err);
       }
     }
   }
@@ -53,58 +54,55 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#login{
-  width:100%;
-  height:100%;
+#login {
+  width: 100%;
+  height: 100%;
 
-  .login-container{
-    width:100%;
-    height:100%;
+  .login-container {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    .login__header{
+    .login__header {
       text-align: left;
-      margin-bottom:1rem;
+      margin-bottom: 1rem;
     }
 
-    .login__form{
+    .login__form {
       text-align: left;
-      margin-bottom:2rem;
-      width:100%;
-      max-width:320px;
+      margin-bottom: 2rem;
+      width: 100%;
+      max-width: 320px;
 
-      label{
+      label {
         display: block;
       }
 
-      input{
-        padding:0.5rem 1rem;
-        display:block;
-        width:100%;
+      input {
+        padding: 0.5rem 1rem;
+        display: block;
+        width: 100%;
       }
 
-      button{
-        padding:0.5rem 1rem;
-        background-color:white;
-        border:1px solid black;
+      button {
+        padding: 0.5rem 1rem;
+        background-color: white;
+        border: 1px solid black;
         box-shadow: 2px 2px 0px black;
-        margin-top:1.5rem;
+        margin-top: 1.5rem;
       }
 
-      .forgot-password{
-        font-size:0.8rem;
+      .forgot-password {
+        font-size: 0.8rem;
       }
     }
 
-    .login__alt{
-      font-size:0.8rem;
+    .login__alt {
+      font-size: 0.8rem;
     }
   }
-
 }
-
-
 </style>

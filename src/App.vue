@@ -35,7 +35,7 @@ body {
 }
 
 #app {
-  padding:0.25rem 1rem 0 1rem;
+  padding: 0.25rem 1rem 0 1rem;
   height: 100%;
   display: grid;
   grid-template-rows: auto 1fr;

@@ -1,6 +1,5 @@
 <template>
   <div id="todo-form">
-    
     <!-- <p>Add an entry</p> -->
     <form ref="submitForm" @submit.prevent="submitForm">
       <table>
@@ -26,7 +25,6 @@
           </td>
           <td>
             <input type="text" name="longitude" v-model="form.longitude" />
-            
           </td>
           <!-- <td>
             <div class="input-radio">
@@ -76,18 +74,18 @@ export default {
       //   this.$store.state.todos.length > 0
       //     ? this.$store.state.todos[this.$store.state.todos.length - 1].id + 1
       //     : 0;
-      const newForm = { ...this.form};
+      const newForm = { ...this.form };
       this.$store.dispatch("addTodo", newForm);
 
       Object.keys(this.form).forEach(k => {
-        this.form[k] = null
-      })
+        this.form[k] = null;
+      });
     },
-    getMapCenter(){
+    getMapCenter() {
       this.$store.commit("getMapCenter");
       this.form.longitude = this.$store.state.map.center.lng;
       this.form.latitude = this.$store.state.map.center.lat;
-    },
+    }
   }
 };
 </script>
@@ -121,6 +119,5 @@ table {
     padding: 0.4rem;
     font-size: 0.7rem;
   }
-
 }
 </style>

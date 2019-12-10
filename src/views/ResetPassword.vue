@@ -11,7 +11,11 @@
         <!--  -->
         <div>
           <label for="verifyPassword">verify password</label>
-          <input type="password" name="verifyPassword" v-model="verifyPassword" />
+          <input
+            type="password"
+            name="verifyPassword"
+            v-model="verifyPassword"
+          />
         </div>
 
         <!--  -->

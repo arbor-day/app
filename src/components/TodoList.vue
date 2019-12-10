@@ -11,7 +11,6 @@
         <th>Actions</th>
       </thead>
       <tbody v-if="this.todos.length > 0">
-
         <tr v-for="todo in this.todos" v-bind:key="todo._id">
           <!--  -->
           <td v-if="editing === todo._id">
@@ -89,8 +88,8 @@ export default {
       Object.assign(todo, this.cachedTodo);
       this.editing = null;
     },
-    markComplete(todo){
-      const newTodo = {...todo, status:'complete'}
+    markComplete(todo) {
+      const newTodo = { ...todo, status: "complete" };
       this.$store.dispatch("editTodo", newTodo);
       this.editing = null;
     },
@@ -113,7 +112,6 @@ table {
   table-layout: fixed;
   width: 100%;
   height: 100%;
-  
 
   th {
     border-bottom: 1px solid black;

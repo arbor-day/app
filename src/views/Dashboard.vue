@@ -5,13 +5,13 @@
       <h3>Add trees to the map</h3>
     </section>
     <section class="dashboard__main">
-    <!-- map view -->
-    <MapView />
-    <!-- table view -->
-    <div class="table">
-      <TodoForm />
-      <TodoList />
-    </div>
+      <!-- map view -->
+      <MapView />
+      <!-- table view -->
+      <div class="table">
+        <TodoForm />
+        <TodoList />
+      </div>
     </section>
   </div>
 </template>
@@ -28,8 +28,8 @@ export default {
     TodoForm,
     TodoList
   },
-  mounted(){
-    return this.$store.dispatch('getTodos')
+  mounted() {
+    return this.$store.dispatch("getTodos");
   }
 };
 </script>
@@ -41,16 +41,18 @@ export default {
   grid-template-rows: auto 1fr;
 }
 
-.dashboard__titles{
+.dashboard__titles {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 20px;
-  text-align:left;
-  h3{font-size:1rem;}
+  text-align: left;
+  h3 {
+    font-size: 1rem;
+  }
 }
 
-.dashboard__main{
+.dashboard__main {
   height: 100%;
   max-height: calc(100% - 3rem);
   width: 100%;
@@ -60,9 +62,9 @@ export default {
   // padding: 0 1rem;
 }
 
-.table{
-  width:100%;
-  height:100%;
+.table {
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-rows: 6rem calc(100vh - 11.25rem);
   grid-row-gap: 20px;

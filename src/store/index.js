@@ -243,6 +243,36 @@ export default new Vuex.Store({
         throw new Error(err);
       }
     },
+    async register(context, data) {
+      try {
+        const options = {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          // credentials: 'include',
+          body: JSON.stringify(data)
+        };
+
+        let result = await fetch(
+          `${API_BASE_URL}/api/v1/users/register`,
+          options
+        );
+
+        result = await result.json();
+
+        if (result.token) {
+          alert("signup successful");
+          Router.push({ path: "home" });
+        } else {
+          alert("signup unsuccesful");
+          Router.push({ path: "signup" });
+        }
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
     async forgotPassword(context, data) {
       const options = {
         method: "POST",

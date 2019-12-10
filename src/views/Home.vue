@@ -2,7 +2,12 @@
   <div class="home">
     <header>
       <h1>Every Day is Arbor day</h1>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique sit quod aliquam sint voluptatem veritatis nam est ab veniam officia possimus repellat eveniet, quisquam quaerat, doloremque delectus quia voluptas nisi.</p>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique sit
+        quod aliquam sint voluptatem veritatis nam est ab veniam officia
+        possimus repellat eveniet, quisquam quaerat, doloremque delectus quia
+        voluptas nisi.
+      </p>
     </header>
     <main>
       <section>
@@ -33,21 +38,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-header{
-  background-color:aliceblue;
+header {
+  background-color: aliceblue;
   height: 50vh;
   display: flex;
   justify-content: center;
-  align-items:center;
-  flex-direction:column;
+  align-items: center;
+  flex-direction: column;
 
-  p{
-    max-width:60rem;
+  p {
+    max-width: 60rem;
   }
 }
 
-section{
+section {
   margin: 2rem 0;
 }
-
 </style>

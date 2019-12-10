@@ -17,23 +17,22 @@
 </template>
 
 <style lang="scss" scoped>
-.about{
-  
+.about {
 }
 
-header{
-  background-color:aliceblue;
+header {
+  background-color: aliceblue;
   height: 50vh;
   display: flex;
   justify-content: center;
-  align-items:center;
-  flex-direction:column;
+  align-items: center;
+  flex-direction: column;
 
-  p{
-    max-width:60rem;
+  p {
+    max-width: 60rem;
   }
 }
-section{
+section {
   margin: 2rem 0;
 }
 </style>

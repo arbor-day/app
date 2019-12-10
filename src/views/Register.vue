@@ -1,7 +1,7 @@
 <template>
   <div id="register">
     <div class="register-container">
-    <h2 class="register__header">Register</h2>
+      <h2 class="register__header">Register</h2>
       <form class="register__form" @submit.prevent="submitForm">
         <!--  -->
         <div>
@@ -30,8 +30,7 @@
 </template>
 
 <script>
-import Router from '../router'; 
-export default {  
+export default {
   name: "register",
   data() {
     return {
@@ -49,34 +48,9 @@ export default {
           password: this.pass
         };
 
-        const options = {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          // credentials: 'include',
-          body: JSON.stringify(data)
-        };
-
-        let result = await fetch(
-          "http://localhost:3030/api/v1/users/register",
-          options
-        );
-        
-        result = await result.json();
-        
-        if(result.token){
-          alert('signup successful')
-          Router.push({ path: 'home' })
-        } else {
-          alert('signup unsuccesful')
-          Router.push({ path: 'signup' })
-        }
-        
-
-      } catch (err) {
-        throw new Error(err)
+        return this.$store.dispatch("register", data);
+      } catch (error) {
+        throw new Error(error);
       }
     }
   }
@@ -84,56 +58,55 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#register{
-  width:100%;
-  height:100%;
+#register {
+  width: 100%;
+  height: 100%;
 
-  .register-container{
-    width:100%;
-    height:100%;
+  .register-container {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    .register__header{
+    .register__header {
       text-align: left;
-      margin-bottom:1rem;
+      margin-bottom: 1rem;
     }
 
-    .register__form{
+    .register__form {
       text-align: left;
-      margin-bottom:2rem;
-      width:100%;
-      max-width:320px;
+      margin-bottom: 2rem;
+      width: 100%;
+      max-width: 320px;
 
-      label{
+      label {
         display: block;
       }
 
-      input{
-        padding:0.5rem 1rem;
-        display:block;
-        width:100%;
+      input {
+        padding: 0.5rem 1rem;
+        display: block;
+        width: 100%;
       }
 
-      button{
-        padding:0.5rem 1rem;
-        background-color:white;
-        border:1px solid black;
+      button {
+        padding: 0.5rem 1rem;
+        background-color: white;
+        border: 1px solid black;
         box-shadow: 2px 2px 0px black;
-        margin-top:1.5rem;
+        margin-top: 1.5rem;
       }
 
-      .forgot-password{
-        font-size:0.8rem;
+      .forgot-password {
+        font-size: 0.8rem;
       }
     }
 
-    .register__alt{
-      font-size:0.8rem;
+    .register__alt {
+      font-size: 0.8rem;
     }
   }
-
 }
 </style>
