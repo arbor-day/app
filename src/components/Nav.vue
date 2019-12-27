@@ -2,6 +2,9 @@
   <div id="nav">
     <div class="nav__logo">
       <router-link to="/">MoreTrees.NYC</router-link>
+      <router-link to="/about">About</router-link>
+      <router-link to="/dashboard">Dashboard</router-link>
+      <router-link to="/submit">Submit</router-link>
     </div>
 
     <div class="nav__links">
@@ -11,10 +14,6 @@
         <button @click.prevent="logout">logout</button>
       </div>
       <router-link v-else to="/login">Login/Register</router-link>
-      <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
-      <router-link to="/dashboard">Dashboard</router-link>
-      <router-link to="/submit">Submit</router-link>
     </div>
   </div>
 </template>
