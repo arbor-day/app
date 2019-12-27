@@ -1,26 +1,21 @@
 <template>
   <div class="home">
-    <header>
-      <h1>Every Day is Arbor day</h1>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique sit
-        quod aliquam sint voluptatem veritatis nam est ab veniam officia
-        possimus repellat eveniet, quisquam quaerat, doloremque delectus quia
-        voluptas nisi.
-      </p>
+    <header class="header">
+      <h1 class="header__title">It's always a great day to plant a tree in NYC.</h1>
+      <button class="header__cta">Get Started</button>
     </header>
     <main>
-      <section>
-        <h2>Why we're doing this</h2>
+      <section class="">
+        <h3>It starts with one tree</h3>
       </section>
 
       <section>
-        <h2>It's Free!</h2>
+        <h3>How it works</h3>
+        <p>Step 1: Notice</p>
+        <p>Step 2: Catalog</p>
+        <p>Step 3: Submit</p>
       </section>
 
-      <section>
-        <h2>Best damn city in the world</h2>
-      </section>
     </main>
   </div>
 </template>
@@ -38,16 +33,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-header {
+.header {
   background-color: aliceblue;
-  height: 50vh;
+  // background-image: linear-gradient(to right bottom, #B4EC51, rgba(66, 147, 33, 0.509)), url("../assets/ny-stock-exchange-tree-via-MilleFioriFavoriti.jpg");
+   background-image: linear-gradient(to right bottom, rgba(180, 236, 81, 0.109), rgba(66, 147, 33, 0.909));
+  background-size: cover;
+  height: 90vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
+  text-align: left;
+  padding:2rem 3rem;
 
-  p {
-    max-width: 60rem;
+  .header__title {
+    max-width: 22rem;
+    margin-top: 0.8rem;
+    font-weight: 900;
+    font-size: 2.35rem;
+  }
+
+  .header__cta {
+    border:4px white;
+    padding:1rem 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2ch;
+    margin-top:1rem;
+    background:white;
   }
 }
 
