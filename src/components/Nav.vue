@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <div class="nav__logo">
-      <router-link to="/">Everyday, Arbor Day</router-link>
+      <router-link to="/">MoreTrees.NYC</router-link>
     </div>
 
     <div class="nav__links">

@@ -1,17 +1,15 @@
 <template>
   <div class="home">
     <header>
-      <h1>Every Day is Arbor day</h1>
+      <h1>Every day is arbor day in NYC</h1>
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique sit
-        quod aliquam sint voluptatem veritatis nam est ab veniam officia
-        possimus repellat eveniet, quisquam quaerat, doloremque delectus quia
-        voluptas nisi.
+        MoreTrees.nyc is a grassroots tree mapping and planting initiative in New York City's Five Boroughs. 
       </p>
     </header>
     <main>
       <section>
         <h2>Why we're doing this</h2>
+        <p></p>
       </section>
 
       <section>
@@ -40,14 +38,15 @@ export default {
 <style lang="scss" scoped>
 header {
   background-color: aliceblue;
-  height: 50vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
   p {
-    max-width: 60rem;
+    max-width: 30rem;
+    margin-top: 1.5rem;
   }
 }
 
