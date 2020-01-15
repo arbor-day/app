@@ -1,16 +1,21 @@
 <template>
   <div id="nav">
-    <div class="nav__logo">
+    <div class="nav__links--left">
       <router-link to="/">MoreTrees.NYC</router-link>
       <router-link to="/about">About</router-link>
       <router-link to="/dashboard">Dashboard</router-link>
       <router-link to="/submit">Submit</router-link>
     </div>
 
+    <!-- <div class="nav__logo">
+      <router-link to="/">
+        <img src="../assets/MoreTrees_Logo_Arboret.jpg" alt="more trees logo" />
+      </router-link>
+    </div> -->
+
     <div class="nav__links">
       <div class="nav__links--authd" v-if="isAuthd">
-        <p>welcome {{ this.$store.state.user.username }}</p>
-        |
+        <p>welcome {{ this.$store.state.user.username }}</p>|
         <button @click.prevent="logout">logout</button>
       </div>
       <router-link v-else to="/login">Login/Register</router-link>
@@ -39,12 +44,20 @@ export default {
 
 <style lang="scss" scoped>
 #nav {
-  // padding: 0.5rem 1rem;
+  padding: 0.5rem 0rem;
   display: flex;
   justify-content: space-between;
 
+  .nav__links--left{
+    // margin-right: 2rem;
+  }
+
   .nav__logo {
-    margin-right: 2rem;
+    max-width:300px;
+
+    img{
+      width:100%;
+    }
   }
 
   .nav__links--authd,
