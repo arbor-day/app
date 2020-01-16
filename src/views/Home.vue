@@ -1,13 +1,6 @@
 <template>
   <div class="home">
-    <header class="header">
-      <img class="header__img" src="../assets/MoreTrees_Logo_Arboret-nobg.png" />
-      <h1 class="header__title">It's always a great day to plant a tree in NYC.</h1>
-      <div class="cta">
-        <button class="cta__button">Get Started</button>
-        <button class="cta__button">Submit</button>
-      </div>
-    </header>
+    <HomeHeader />
     <main class="main">
       <!-- section project -->
       <section class="section section__project">
@@ -118,268 +111,221 @@
 // @ is an alias to /src
 import FAQ from "@/components/FAQ.vue";
 import Footer from "@/components/Footer.vue";
+import HomeHeader from "@/components/HomeHeader.vue";
 
 export default {
   name: "home",
   components: {
     FAQ,
-    Footer
+    Footer,
+    HomeHeader
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.header {
-  // background-color: aliceblue;
-  border: 2px solid black;
-  background-size: cover;
-  height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 2rem 3rem;
-
-  &__title {
-    max-width: 30rem;
-    margin-top: 0.8rem;
-    font-weight: 900;
-    font-size: 2.35rem;
-    margin-bottom: 2rem;
-  }
-
-  &__img {
-    width: 80%;
-    margin-bottom: 2rem;
-  }
-
-  .cta {
-    display: flex;
-
-    &__button {
-      border: 2px solid black;
-      padding: 1rem 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2ch;
-      margin-top: 1rem;
-      background: white;
-      width: 160px;
-      transition: background-color 0.6s;
-    }
-
-    &__button:hover {
-      background-color: #9eebcf;
-    }
-
-    &__button:not(:last-child) {
-      margin-right: 1rem;
-    }
-  }
-}
-
 .main {
   margin: 2rem 0;
+}
 
-  .section {
-    margin: 2rem 0rem;
+.section {
+  margin: 2rem 0rem;
 
-    &__list {
-      margin-left: 2rem;
-      height:100%;
+  &__list {
+    margin-left: 2rem;
+    height: 100%;
 
-      &--stretched{
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        justify-content: space-around;
-      }
+    &--stretched {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-around;
     }
-    &__title {
-      font-size: 2.6rem;
-      width: 100%;
-      position: relative;
-      color: white;
-      margin-bottom: 2rem;
-    }
+  }
+  &__title {
+    font-size: 2.6rem;
+    width: 100%;
+    position: relative;
+    color: white;
+    margin-bottom: 2rem;
+  }
 
-    &__subtitle {
-      font-size: 1.8rem;
-      max-width: 600px;
+  &__subtitle {
+    font-size: 1.8rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  &__text {
+    font-size: 1.2rem;
+    max-width: 600px;
+    text-align: left;
+
+    &--centered {
       margin: 0 auto;
     }
 
-    &__text {
-      font-size: 1.2rem;
-      max-width: 600px;
-      text-align: left;
+    &--left {
+      margin: 0 1rem;
+      height: 100%;
+    }
+  }
 
-      &--centered {
-        margin: 0 auto;
-      }
+  &__title::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 600px;
+    height: 100%;
+    border: 2px solid black;
+    background-color: black;
+    z-index: -1;
+  }
+
+  &__body {
+    width: 100%;
+    display: grid;
+    padding: 1rem;
+
+    &--3-col {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 1rem;
+      align-items: center;
+      height: 50vh;
+    }
+    &--2-col {
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 1rem;
+      align-items: center;
+      height: 50vh;
+    }
+  }
+
+  &__video {
+    border: 2px solid black;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__card {
+    width: 100%;
+    height: 300px;
+    border: 2px solid black;
+    padding: 0.5rem;
+    position: relative;
+
+    &__title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      // margin-top: -2rem;
+      padding: 0.5rem;
+      text-align: center;
+      background-color: black;
+      color: white;
+    }
+
+    &--map {
+      background-image: url(../assets/placeholders/pin-1F4CD_color.png);
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &--plant {
+      background-image: url(../assets/placeholders/tree-1F333_color.png);
+      background-size: auto 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &--maintain {
+      background-image: url(../assets/placeholders/water-1F6BF_color.png);
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  &__project {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  &__how {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  &__articles {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  &__article {
+    width: 100%;
+    height: 50vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &__header {
+      height: 100%;
+      padding: 1rem;
+      grid-row: 1/3;
 
       &--left {
-        margin: 0 1rem;
-        height:100%;
+        grid-column: 1/2;
       }
-    }
-
-    &__title::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translate(-50%, 0%);
-      width: 600px;
-      height: 100%;
-      border: 2px solid black;
-      background-color: black;
-      z-index: -1;
-    }
-
-    &__body {
-      width: 100%;
-      display: grid;
-      padding: 1rem;
-
-      &--3-col {
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-column-gap: 1rem;
-        align-items: center;
-        height: 50vh;
+      &--right {
+        grid-column: 2/3;
       }
-      &--2-col {
-        grid-template-columns: 1fr 1fr;
-        grid-column-gap: 1rem;
-        align-items: center;
-        height: 50vh;
+
+      &__container {
+        height: 100%;
+        width: 100%;
+        padding: 1rem;
+        text-align: left;
       }
-    }
-
-    &__video {
-      border: 2px solid black;
-      height: 100%;
-      background-color:#f4f4f4;
-      display:flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    &__card {
-      width: 100%;
-      height: 300px;
-      border: 2px solid black;
-      padding: 0.5rem;
-      position: relative;
 
       &__title {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        // margin-top: -2rem;
-        padding: 0.5rem;
-        text-align: center;
-        background-color: black;
-        color: white;
+        font-size: 2rem;
+        margin-bottom: 1rem;
       }
+      &__text {
+        line-height: 1.4;
+        font-size: 1.3rem;
+      }
+    }
 
-      &--map {
-        background-image: url(../assets/placeholders/pin-1F4CD_color.png);
-        background-size: auto 100%;
+    &__image {
+      height: 100%;
+      grid-row: 1/3;
+
+      &--city {
+        background-image: url(../assets/placeholders/tree-bed-IMG_8600.jpg);
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
       }
 
-      &--plant {
-        background-image: url(../assets/placeholders/tree-1F333_color.png);
-        background-size: auto 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-
-      &--maintain {
-        background-image: url(../assets/placeholders/water-1F6BF_color.png);
-        background-size: auto 100%;
+      &--you {
+        background-image: url(../assets/placeholders/andy-DSCF1815.jpg);
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
       }
-    }
 
-    &__project {
-      margin-top: 4rem;
-      margin-bottom: 2rem;
-    }
-
-    &__how {
-      margin-top: 4rem;
-      margin-bottom: 2rem;
-    }
-
-    &__articles {
-      display: flex;
-      flex-direction: column;
-      margin-top: 2rem;
-    }
-
-    &__article {
-      width: 100%;
-      height: 50vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      &__header {
-        height: 100%;
-        padding: 1rem;
-        grid-row: 1/3;
-
-        &--left {
-          grid-column: 1/2;
-        }
-        &--right {
-          grid-column: 2/3;
-        }
-
-        &__container {
-          height: 100%;
-          width: 100%;
-          padding: 1rem;
-          text-align: left;
-        }
-
-        &__title {
-          font-size: 2rem;
-          margin-bottom: 1rem;
-        }
-        &__text {
-          line-height: 1.4;
-          font-size: 1.3rem;
-        }
-      }
-
-      &__image {
-        height: 100%;
-        grid-row: 1/3;
-
-        &--city {
-          background-image: url(../assets/placeholders/tree-bed-IMG_8600.jpg);
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-
-        &--you {
-          background-image: url(../assets/placeholders/andy-DSCF1815.jpg);
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-
-        &--environment {
-          background-image: url(../assets/placeholders/800px-Prospect_Park_New_York_November_2016_002.jpg);
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-position: center;
-        }
+      &--environment {
+        background-image: url(../assets/placeholders/800px-Prospect_Park_New_York_November_2016_002.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
       }
     }
   }
