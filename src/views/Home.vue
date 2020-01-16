@@ -12,6 +12,7 @@
       <!-- section project -->
       <section class="section__project">
         <h2 class="section__title">The Project</h2>
+        <h3 class="section__subtitle">The MoreTrees project is made up of 3 components: Map, Plant, and Maintain</h3>
         <div class="section__body">
           <div class="section__card section__card--map">
             <h3 class="section__card__title">Map</h3>
@@ -23,6 +24,13 @@
             <h3 class="section__card__title">Maintain</h3>
           </div>
         </div>
+        <p class="section__text">Our goals are to: 
+          <ol class="section__list">
+            <li>Continually map empty tree beds where trees can be planted</li>
+            <li>Periodically request the city to plant trees based on our map, and </li>
+            <li>Constantly inspire New Yorkers to help care for the street trees and become New York City tree stewards.</li>
+          </ol>
+        </p>
       </section>
       <!-- section how -->
       <!-- <section class="section__how">
@@ -102,7 +110,6 @@ export default {
 
 <style lang="scss" scoped>
 
-
 .header {
   // background-color: aliceblue;
   border:2px solid black;
@@ -157,12 +164,28 @@ export default {
 
   
   .section {
+    &__list{
+      margin-left:2rem;
+    }
     &__title {
       font-size: 2.6rem;
       width: 100%;
       position: relative;
       color: white;
       margin-bottom:2rem;
+    }
+
+    &__subtitle{
+      font-size: 1.8rem;
+      max-width:600px;
+      margin:0 auto;
+    }
+
+    &__text{
+      font-size: 1.2rem;
+      max-width:600px;
+      margin:0 auto;
+      text-align:left;
     }
 
     &__title::before {
