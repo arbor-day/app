@@ -10,10 +10,12 @@
     </header>
     <main class="main">
       <!-- section project -->
-      <section class="section__project">
+      <section class="section section__project">
         <h2 class="section__title">The Project</h2>
-        <h3 class="section__subtitle">The MoreTrees project is made up of 3 components: Map, Plant, and Maintain</h3>
-        <div class="section__body">
+        <h3
+          class="section__subtitle"
+        >The MoreTrees project is made up of 3 components: Map, Plant, and Maintain</h3>
+        <div class="section__body section__body--3-col">
           <div class="section__card section__card--map">
             <h3 class="section__card__title">Map</h3>
           </div>
@@ -24,14 +26,32 @@
             <h3 class="section__card__title">Maintain</h3>
           </div>
         </div>
-        <p class="section__text">Our goals are to: 
+        <div class="section__text section__text--centered">
+          <h3 class="section__subtitle">Our goals are to:</h3>
           <ol class="section__list">
             <li>Continually map empty tree beds where trees can be planted</li>
-            <li>Periodically request the city to plant trees based on our map, and </li>
+            <li>Periodically request the city to plant trees based on our map, and</li>
             <li>Constantly inspire New Yorkers to help care for the street trees and become New York City tree stewards.</li>
           </ol>
-        </p>
+        </div>
       </section>
+
+      <!-- section -->
+      <section class="section">
+        <h2 class="section__title">Getting Involved</h2>
+        <section class="section__body section__body--2-col">
+          <div class="section__video">video coming soon</div>
+          <div class="section__text section__text--left">
+            <ol class="section__list section__list--stretched">
+              <li>Read the guide</li>
+              <li>Start mapping</li>
+              <li>Participate in tree plantings</li>
+              <li>Become a street tree super hero</li>
+            </ol>
+          </div>
+        </section>
+      </section>
+
       <!-- section how -->
       <!-- <section class="section__how">
         <h2 class="section__title">Making Connections</h2>
@@ -75,7 +95,7 @@
             <div class="section__article__image section__article__image--environment"></div>
           </article>
         </div>
-      </section> -->
+      </section>-->
 
       <!-- section operations -->
       <!-- <section class="section__operations">
@@ -83,11 +103,11 @@
         <div class="section__text">
           &nbsp;
         </div>
-      </section> -->
+      </section>-->
       <!--  -->
       <section class="section">
         <h2 class="section__title">FAQ</h2>
-        <FAQ/>
+        <FAQ />
       </section>
     </main>
     <Footer />
@@ -109,10 +129,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .header {
   // background-color: aliceblue;
-  border:2px solid black;
+  border: 2px solid black;
   background-size: cover;
   height: 90vh;
   display: flex;
@@ -162,30 +181,47 @@ export default {
 .main {
   margin: 2rem 0;
 
-  
   .section {
-    &__list{
-      margin-left:2rem;
+    margin: 2rem 0rem;
+
+    &__list {
+      margin-left: 2rem;
+      height:100%;
+
+      &--stretched{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-around;
+      }
     }
     &__title {
       font-size: 2.6rem;
       width: 100%;
       position: relative;
       color: white;
-      margin-bottom:2rem;
+      margin-bottom: 2rem;
     }
 
-    &__subtitle{
+    &__subtitle {
       font-size: 1.8rem;
-      max-width:600px;
-      margin:0 auto;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    &__text{
+    &__text {
       font-size: 1.2rem;
-      max-width:600px;
-      margin:0 auto;
-      text-align:left;
+      max-width: 600px;
+      text-align: left;
+
+      &--centered {
+        margin: 0 auto;
+      }
+
+      &--left {
+        margin: 0 1rem;
+        height:100%;
+      }
     }
 
     &__title::before {
@@ -203,11 +239,30 @@ export default {
 
     &__body {
       width: 100%;
-      height: 50vh;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-column-gap: 1rem;
+      padding: 1rem;
+
+      &--3-col {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 1rem;
+        align-items: center;
+        height: 50vh;
+      }
+      &--2-col {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 1rem;
+        align-items: center;
+        height: 50vh;
+      }
+    }
+
+    &__video {
+      border: 2px solid black;
+      height: 100%;
+      background-color:#f4f4f4;
+      display:flex;
       align-items: center;
+      justify-content: center;
     }
 
     &__card {
