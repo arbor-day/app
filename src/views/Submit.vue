@@ -13,9 +13,7 @@
         playsinline
         id="myvideo"
       ></video>-->
-      <div
-        id="myCanvas"
-      ></div>
+      <div id="myCanvas"></div>
       <form @submit.prevent="submitForm" class="submit__form">
         <label for="latitude">latitude</label>
         <input type="text" name="latitude" v-model="latitude" />
@@ -118,17 +116,24 @@ export default {
         // NOTE: Set up is here
         sketch.setup = () => {
           sketch.createCanvas(360, 280);
-          video = sketch.createCapture(sketch.VIDEO);
+          video = sketch.createCapture({
+            audio: false,
+            video: {
+              facingMode: {
+                exact: "environment"
+              }
+            }
+          });
           video.size(360, 280);
           video.hide();
         }; // NOTE: Draw is here
         sketch.draw = () => {
           sketch.background(0);
-          sketch.image(video, 0,0, sketch.width, sketch.height);
+          sketch.image(video, 0, 0, sketch.width, sketch.height);
         };
       }; // NOTE: Use p5 as an instance mode
       new P5(script, document.querySelector("#myCanvas"));
-    }
+    };
     makeP5();
   }
 };
