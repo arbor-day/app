@@ -6,7 +6,6 @@
     <div v-if="quick" class="submit__quick">
       <video
         ref="myvideo"
-        src="#"
         width="360px"
         height="280px"
         autoplay
