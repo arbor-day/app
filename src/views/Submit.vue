@@ -93,7 +93,7 @@ export default {
 
         window.requestAnimationFrame(renderVideoToCanvas);
       } catch (err) {
-        console.log(err);
+        return err;
       }
     },
     submitForm() {
