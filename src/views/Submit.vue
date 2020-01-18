@@ -4,7 +4,7 @@
     <router-link to="/submit">normal Submit</router-link>
     <!-- quick -->
     <div v-if="quick" class="submit__quick">
-      <video
+      <!-- <video
         ref="myvideo"
         width="360px"
         height="280px"
@@ -12,8 +12,10 @@
         muted
         playsinline
         id="myvideo"
-      ></video>
-      <canvas ref="mycanvas" width="360px" height="280px"></canvas>
+      ></video>-->
+      <div
+        id="myCanvas"
+      ></div>
       <form @submit.prevent="submitForm" class="submit__form">
         <label for="latitude">latitude</label>
         <input type="text" name="latitude" v-model="latitude" />
@@ -32,6 +34,7 @@
 </template>
 
 <script>
+const P5 = require("p5");
 export default {
   name: "submit",
   data() {
@@ -106,8 +109,27 @@ export default {
     }
   },
   mounted() {
-    this.getVideo();
+    // this.getVideo();
     this.getLocation();
+
+    const makeP5 = () => {
+      const script = function(sketch) {
+        let video;
+        // NOTE: Set up is here
+        sketch.setup = () => {
+          sketch.createCanvas(360, 280);
+          video = sketch.createCapture(sketch.VIDEO);
+          video.size(360, 280);
+          video.hide();
+        }; // NOTE: Draw is here
+        sketch.draw = () => {
+          sketch.background(0);
+          sketch.image(video, 0,0, sketch.width, sketch.height);
+        };
+      }; // NOTE: Use p5 as an instance mode
+      new P5(script, document.querySelector("#myCanvas"));
+    }
+    makeP5();
   }
 };
 </script>
