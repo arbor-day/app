@@ -103,21 +103,21 @@
         <FAQ />
       </section>
     </main>
-    <Footer />
+    <AppFooter />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import FAQ from "@/components/FAQ.vue";
-import Footer from "@/components/Footer.vue";
+import AppFooter from "@/components/Footer.vue";
 import HomeHeader from "@/components/HomeHeader.vue";
 
 export default {
   name: "home",
   components: {
     FAQ,
-    Footer,
+    AppFooter,
     HomeHeader
   }
 };

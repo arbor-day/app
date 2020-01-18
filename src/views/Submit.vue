@@ -1,16 +1,20 @@
 <template>
   <div id="submit">
-    <router-link to="/submit?quick=true">Quick Submit</router-link> |
+    <router-link to="/submit?quick=true">Quick Submit</router-link>|
     <router-link to="/submit">normal Submit</router-link>
     <!-- quick -->
     <div v-if="quick" class="submit__quick">
       <video
         ref="myvideo"
         src="#"
-        width="300px"
-        height="300px"
+        width="360px"
+        height="280px"
         autoplay
+        muted
+        playsinline
+        id="myvideo"
       ></video>
+      <canvas ref="mycanvas" width="360px" height="280px"></canvas>
       <form @submit.prevent="submitForm" class="submit__form">
         <label for="latitude">latitude</label>
         <input type="text" name="latitude" v-model="latitude" />
@@ -45,6 +49,9 @@ export default {
         return true;
       }
       return false;
+    },
+    videoElement() {
+      return this.$refs.myvideo;
     }
   },
   methods: {
@@ -60,10 +67,34 @@ export default {
       }
     },
     async getVideo() {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      this.$refs.myvideo.srcObject = stream;
-      this.$refs.myvideo.play();
-      // this.video.play();
+      let stream;
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: true
+        });
+
+        this.videoElement.srcObject = stream;
+        this.videoElement.play();
+
+        // canvas
+        const canvas = this.$refs.mycanvas;
+        const ctx = canvas.getContext("2d");
+
+        const renderVideoToCanvas = () => {
+          window.requestAnimationFrame(renderVideoToCanvas);
+          ctx.drawImage(
+            this.videoElement,
+            0,
+            0,
+            this.videoElement.width,
+            this.videoElement.height
+          );
+        };
+
+        window.requestAnimationFrame(renderVideoToCanvas);
+      } catch (err) {
+        console.log(err);
+      }
     },
     submitForm() {
       const data = {
@@ -83,6 +114,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+#myvideo {
+  display: none;
+}
+
 .submit__quick {
   display: flex;
   flex-direction: column;
