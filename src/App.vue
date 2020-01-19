@@ -39,7 +39,7 @@ body {
   height: 100%;
   display: grid;
   grid-template-rows: auto 1fr;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "merriweather", "serif", "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

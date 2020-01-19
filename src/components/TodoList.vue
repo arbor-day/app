@@ -16,7 +16,14 @@
           <td v-if="editing === todo._id">
             <input type="file" />
           </td>
-          <td v-else>{{ todo.photo }}</td>
+          <td v-else>
+            <!-- https://moretrees-static.s3.amazonaws.com/ -->
+            <!-- https://moretrees-static.s3.amazonaws.com/26267215861_3ba8bd7710_k.jpg 
+            https://s3.amazonaws.com/mybucket/static/css/app.xxx.css
+            -->
+            <!-- <img width="100%" :src="'https://moretrees-static.s3.amazonaws.com/' + todo.photo" > -->
+            <img width="100%" :src="todo.photo" />
+          </td>
           <!--  -->
           <td v-if="editing === todo._id">
             <input type="text" name="address" v-model="todo.address" />

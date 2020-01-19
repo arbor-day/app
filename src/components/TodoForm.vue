@@ -5,7 +5,10 @@
       <table>
         <thead>
           <th>Photo</th>
-          <th>Address <button @click.prevent="getMapCenter">⌖</button></th>
+          <th>
+            Address
+            <button @click.prevent="getMapCenter">⌖</button>
+          </th>
           <th>Latitude</th>
           <th>Longitude</th>
           <!-- <th>Status</th> -->
@@ -14,8 +17,8 @@
         </thead>
         <tbody>
           <td>
-            <!-- <input type="file" /> -->
-            <p>not yet supported</p>
+            <input type="file" name="photo" @change="handleFileChange" />
+            <!-- <p>not yet supported</p> -->
           </td>
           <td>
             <input type="text" name="address" v-model="form.address" />
@@ -35,7 +38,7 @@
               <input type="radio" name="todoStatus" value="incomplete" />
               <label for="todo-incomplete">incomplete</label>
             </div>
-          </td> -->
+          </td>-->
           <td>
             <input type="text" name="description" v-model="form.description" />
           </td>
@@ -68,6 +71,10 @@ export default {
   components: {},
   computed: {},
   methods: {
+    handleFileChange(evt) {
+      // this.photo = evt.target.files[0];
+      this.form.photo = evt.target.files[0];
+    },
     submitForm() {
       // console.log(this.form);
       // const id =
