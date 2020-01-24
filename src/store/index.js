@@ -263,7 +263,7 @@ export default new Vuex.Store({
           context.commit('setUsername', null);
 
           Router.push({
-            path: '/'
+            path: '/login'
           });
         }
       } catch (err) {
