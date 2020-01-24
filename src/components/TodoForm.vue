@@ -73,6 +73,7 @@ export default {
   methods: {
     handleFileChange(evt) {
       // this.photo = evt.target.files[0];
+      console.log(evt.target.files[0])
       this.form.photo = evt.target.files[0];
     },
     submitForm() {

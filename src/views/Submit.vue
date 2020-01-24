@@ -97,13 +97,23 @@ export default {
       }
     },
     submitForm() {
-      const data = {
-        latitude: this.latitude,
-        longitude: this.longitude,
-        description: this.description
-      };
+      document.querySelector("#defaultCanvas0").toBlob(
+        blob => {
+          const photoData = blob;
+          photoData.name = `${Date.now()}.jpg`;
 
-      this.$store.dispatch("addTodo", data);
+          const data = {
+            latitude: this.latitude,
+            longitude: this.longitude,
+            description: this.description,
+            photo: photoData
+          };
+
+          this.$store.dispatch("addTodo", data);
+        },
+        "image/jpeg",
+        0.95
+      );
     }
   },
   mounted() {
