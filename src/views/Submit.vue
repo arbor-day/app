@@ -1,18 +1,9 @@
 <template>
   <div id="submit">
-    <router-link to="/submit?quick=true">Quick Submit</router-link>|
-    <router-link to="/submit">normal Submit</router-link>
+    <!-- <router-link to="/submit?quick=true">Quick Submit</router-link>| -->
+    <!-- <router-link to="/submit">normal Submit</router-link> -->
     <!-- quick -->
-    <div v-if="quick" class="submit__quick">
-      <!-- <video
-        ref="myvideo"
-        width="360px"
-        height="280px"
-        autoplay
-        muted
-        playsinline
-        id="myvideo"
-      ></video>-->
+    <div class="submit__quick">
       <div id="myCanvas"></div>
       <form @submit.prevent="submitForm" class="submit__form">
         <label for="latitude">latitude</label>
@@ -23,10 +14,6 @@
         <input type="text" name="description" v-model="description" />
         <button>submit!</button>
       </form>
-      <!-- normal form -->
-    </div>
-    <div v-else>
-      <p>form</p>
     </div>
   </div>
 </template>
@@ -43,17 +30,7 @@ export default {
       description: "an empty tree bed"
     };
   },
-  computed: {
-    quick() {
-      if (this.$route.query.quick === "true") {
-        return true;
-      }
-      return false;
-    },
-    videoElement() {
-      return this.$refs.myvideo;
-    }
-  },
+  computed: {},
   methods: {
     getLocation() {
       if (navigator.geolocation) {
