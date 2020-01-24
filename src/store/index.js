@@ -149,9 +149,11 @@ export default new Vuex.Store({
         let result = await fetch(`${API_BASE_URL}/api/v1/locations`, options);
         result = await result.json();
 
+        alert('successfully added!');
         context.commit('addTodo', result);
         context.commit('updatePoints');
       } catch (error) {
+        alert('Uh-oh! Something went wrong. Sorry!');
         throw new Error(error);
       }
     },
