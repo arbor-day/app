@@ -65,6 +65,7 @@ export default {
       text-align:left;
       margin-bottom:1rem;
       border:2px solid black;
+      background-color: white;
     }
 
     &__question{

@@ -3,18 +3,19 @@
     <HomeHeader />
     <main class="main">
       <section class="section section__map">
+        <h2 class="section__map-title">Empty Tree Beds in NYC</h2>
         <div class="section__map-container">
-          <h2 class="section__map-title">Empty Tree Beds in NYC</h2>
           <MapView/>
         </div>
+        <p class="section__map-description">We're mapping empty tree beds in NYC. All of these locations have been contributed by curious citizens.</p>
       </section>
 
       <!-- section project -->
       <section class="section section__project">
-        <h2 class="section__title">The Project</h2>
+        <h2 class="section__title">Map, Plant, & Maintain</h2>
         <h3
           class="section__subtitle"
-        >The MoreTrees project is made up of 3 components: Map, Plant, and Maintain</h3>
+        ></h3>
         <div class="section__body section__body--3-col">
           <div class="section__card section__card--map">
             <h3 class="section__card__title">Map</h3>
@@ -29,9 +30,9 @@
         <div class="section__text section__text--centered">
           <h3 class="section__subtitle">Our goals are to:</h3>
           <ol class="section__list">
-            <li>Continually map empty tree beds where trees can be planted</li>
-            <li>Periodically request the city to plant trees based on our map, and</li>
-            <li>Constantly inspire New Yorkers to help care for the street trees and become New York City tree stewards.</li>
+            <li><span class="bold">Map</span>: Continually map empty tree beds where trees can be planted</li>
+            <li><span class="bold">Plant</span>: Periodically request the city to plant trees based on our map, and</li>
+            <li><span class="bold">Maintain</span>: Constantly inspire New Yorkers to help care for the street trees and become New York City tree stewards.</li>
           </ol>
         </div>
       </section>
@@ -52,7 +53,7 @@
         </section>
       </section>
       <!-- FAQ -->
-      <section class="section">
+      <section class="section section__faq">
         <h2 class="section__title">FAQ</h2>
         <FAQ />
       </section>
@@ -81,27 +82,45 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-  margin: 2rem 0;
+  margin: 2rem 0 0 0;
 }
 
 .section {
-  margin: 2rem 0rem;
+  margin: 2rem 0rem 0 0;
+  padding: 3rem 0;
 
+  // ---------------------- faq
+  &__faq{
+    background-color: #92D3F5;
+  }
+
+  // ---------------------- map
   &__map{
     position: relative;
     width:100%;
     height: 60vh;
 
     &-title{
-      padding:2rem;
+      padding:1rem;
       position:absolute;
       top:1rem;
       left:1rem;
       border:2px solid black;
       background-color:white;
-      max-width:300px;
+      max-width:400px;
       text-align:left;
       z-index: 1000;
+      font-size:1.2rem;
+      font-weight:100;
+    }
+
+    &-description{
+      font-size:1rem;
+      position:absolute;
+      bottom:0;
+      width:100%;
+      text-align:center;
+      margin-bottom:-2rem;
     }
 
     &-container{
@@ -111,9 +130,11 @@ export default {
       left:0;
       width:100%;
       height: 100%;
+      z-index:0;
     }
   }
 
+  // --------------------- list
   &__list {
     margin-left: 2rem;
     height: 100%;
@@ -123,6 +144,18 @@ export default {
       flex-direction: column;
       height: 100%;
       justify-content: space-around;
+    }
+
+    li{
+      line-height:1.4;
+      font-weight: 100;
+
+      .bold{
+        font-weight:bold;
+      }
+    }
+    li:not(:last-child){
+      margin:1rem 0;
     }
   }
   &__title {
@@ -136,7 +169,7 @@ export default {
   &__subtitle {
     font-size: 1.8rem;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 1rem auto;
   }
 
   &__text {
@@ -154,19 +187,6 @@ export default {
     }
   }
 
-  // &__title::before {
-  //   content: "";
-  //   position: absolute;
-  //   top: 0;
-  //   left: 50%;
-  //   transform: translate(-50%, 0%);
-  //   width: 600px;
-  //   height: 100%;
-  //   border: 2px solid black;
-  //   background-color: black;
-  //   z-index: -1;
-  // }
-
   &__body {
     width: 100%;
     display: grid;
@@ -175,8 +195,13 @@ export default {
     &--3-col {
       grid-template-columns: 1fr 1fr 1fr;
       grid-column-gap: 1rem;
-      align-items: center;
-      height: 50vh;
+      max-width:600px;
+      margin:2rem auto;
+
+      @media screen and (max-width: 600px){
+        // grid-template-columns: 1fr;
+        max-width:300px;
+      }
     }
     &--2-col {
       grid-template-columns: 1fr 1fr;
@@ -199,6 +224,8 @@ export default {
     width: 100%;
     height: 300px;
     border: 2px solid black;
+    box-shadow: 4px 4px #eee;
+    background-color: white;
     padding: 0.5rem;
     position: relative;
 
@@ -206,7 +233,6 @@ export default {
       position: absolute;
       bottom: 0;
       left: 0;
-      // margin-top: -2rem;
       padding: 0.5rem;
       text-align: center;
       background-color: black;
@@ -237,7 +263,9 @@ export default {
 
   &__project {
     margin-top: 6rem;
-    margin-bottom: 10rem;
+    // margin-bottom: 6rem;
+    background-color:#B1CC33;
+    color:black;
   }
 
   &__how {

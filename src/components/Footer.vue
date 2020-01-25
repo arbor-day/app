@@ -39,11 +39,11 @@ export default {
 .footer{
   display: flex;
   flex-direction:column;
-  padding:0.5rem 0rem;
   height: 16rem;
   width:100%;
 
   &__container{
+    padding:0.5rem 0rem;
     width:100%;
     height:100%;
     display:flex;
