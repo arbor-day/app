@@ -1,11 +1,10 @@
 <template>
   <div id="dashboard">
-    
     <section class="dashboard__main">
       <!-- table view -->
       <div class="dashboard__main-table">
         <TodoList />
-      </div> 
+      </div>
       <!-- map section -->
       <div class="dashboard__main-map">
         <!-- submission form -->
@@ -13,13 +12,11 @@
           <TodoForm />
         </div>
         <div class="dashboard__main-map-view">
-        <!-- map view -->
+          <!-- map view -->
           <MapView />
         </div>
       </div>
-      
     </section>
-
   </div>
 </template>
 
@@ -48,46 +45,45 @@ export default {
   padding: 6rem 0.2rem 1rem 0.2rem;
 }
 
-
 .dashboard__main {
   height: 100%;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 0.5rem;
-  position:relative;
+  position: relative;
 
   @media screen and (max-width: 600px) {
     grid-template-columns: 1fr;
   }
 
-  &-map{
-    position:relative;
-    width:100%;
-    height:100%;
+  &-map {
+    position: relative;
+    width: 100%;
+    height: 100%;
 
-    &-controls{
+    &-controls {
       position: absolute;
-      top:0.2rem;
-      left:0;
-      z-index:1000;
-      width:100%;
-      padding:1rem;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      top: 0.2rem;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    &-view{
-      width:100%;
-      height:100%;
+    &-view {
+      width: 100%;
+      height: 100%;
       position: absolute;
-      top:0;
-      left:0;
+      top: 0;
+      left: 0;
     }
   }
 
-  &-table{
+  &-table {
     // padding:1rem;
     width: 100%;
     height: 100%;

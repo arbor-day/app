@@ -1,9 +1,9 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
-import * as turf from '@turf/turf';
+import Vue from "vue";
+import Vuex from "vuex";
+import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
+import * as turf from "@turf/turf";
 // import todosArray from "../assets/sample.js";
-import Router from '../router';
+import Router from "../router";
 
 Vue.use(Vuex);
 
@@ -61,27 +61,27 @@ export default new Vuex.Store({
       state.geo = geo;
     },
     addMapLayers(state) {
-      state.geo.on('load', () => {
-        state.geo.addSource('todo-locations', {
-          type: 'geojson',
+      state.geo.on("load", () => {
+        state.geo.addSource("todo-locations", {
+          type: "geojson",
           data: this.getters.todoMarkers
         });
 
         state.geo.addLayer({
-          id: 'todo-locations',
-          type: 'circle',
-          source: 'todo-locations',
+          id: "todo-locations",
+          type: "circle",
+          source: "todo-locations",
           paint: {
-            'circle-radius': 4,
-            'circle-color': '#ff0000',
-            'circle-stroke-color': '#ffff00'
+            "circle-radius": 4,
+            "circle-color": "#ff0000",
+            "circle-stroke-color": "#ffff00"
           }
         });
       });
     },
     updatePoints(state) {
       if (state.geo !== null && state.geo.loaded()) {
-        state.geo.getSource('todo-locations').setData(this.getters.todoMarkers);
+        state.geo.getSource("todo-locations").setData(this.getters.todoMarkers);
       }
     },
     getMapCenter(state) {
@@ -101,7 +101,7 @@ export default new Vuex.Store({
         let result = await fetch(`${API_BASE_URL}/api/v1/locations`);
         result = await result.json();
 
-        context.commit('setTodos', result);
+        context.commit("setTodos", result);
       } catch (error) {
         throw new Error(error);
       }
@@ -113,7 +113,7 @@ export default new Vuex.Store({
 
         if (dataCopy.photo !== null) {
           const photoOptions = {
-            method: 'GET'
+            method: "GET"
           };
           const encodedPhotoName = encodeURI(dataCopy.photo.name);
           const photoType = dataCopy.photo.type;
@@ -125,9 +125,9 @@ export default new Vuex.Store({
           photoData = await photoData.json();
 
           const uploadOptions = {
-            method: 'PUT',
+            method: "PUT",
             headers: {
-              'Content-type': `${photoType}`
+              "Content-type": `${photoType}`
             },
             body: dataCopy.photo
           };
@@ -137,23 +137,23 @@ export default new Vuex.Store({
         }
 
         const options = {
-          method: 'POST',
+          method: "POST",
           headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
+            Accept: "application/json",
+            "Content-Type": "application/json"
           },
-          credentials: 'include',
+          credentials: "include",
           body: JSON.stringify(dataCopy)
         };
 
         let result = await fetch(`${API_BASE_URL}/api/v1/locations`, options);
         result = await result.json();
 
-        alert('successfully added!');
-        context.commit('addTodo', result);
-        context.commit('updatePoints');
+        alert("successfully added!");
+        context.commit("addTodo", result);
+        context.commit("updatePoints");
       } catch (error) {
-        alert('Uh-oh! Something went wrong. Sorry!');
+        alert("Uh-oh! Something went wrong. Sorry!");
         throw new Error(error);
       }
     },
@@ -162,12 +162,12 @@ export default new Vuex.Store({
         const id = updatedTodo._id;
 
         const options = {
-          method: 'PUT',
+          method: "PUT",
           headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
+            Accept: "application/json",
+            "Content-Type": "application/json"
           },
-          credentials: 'include',
+          credentials: "include",
           body: JSON.stringify(updatedTodo)
         };
 
@@ -177,12 +177,12 @@ export default new Vuex.Store({
         );
         result = await result.json();
 
-        if (result.status === 'success') {
-          alert('feature successfully updated');
-          context.commit('editTodo', result.data);
-          context.commit('updatePoints');
+        if (result.status === "success") {
+          alert("feature successfully updated");
+          context.commit("editTodo", result.data);
+          context.commit("updatePoints");
         } else {
-          alert('error editing feature');
+          alert("error editing feature");
         }
       } catch (error) {
         throw new Error(error);
@@ -192,12 +192,12 @@ export default new Vuex.Store({
       try {
         // console.log("remove todo");
         const options = {
-          method: 'DELETE',
+          method: "DELETE",
           headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
+            Accept: "application/json",
+            "Content-Type": "application/json"
           },
-          credentials: 'include'
+          credentials: "include"
           // body: JSON.stringify(data)
         };
 
@@ -207,12 +207,12 @@ export default new Vuex.Store({
         );
         result = await result.json();
 
-        if (result.status === 'success') {
-          alert('feature successfully deleted');
-          context.commit('removeTodo', id);
-          context.commit('updatePoints');
+        if (result.status === "success") {
+          alert("feature successfully deleted");
+          context.commit("removeTodo", id);
+          context.commit("updatePoints");
         } else {
-          alert('error deleting feature');
+          alert("error deleting feature");
         }
       } catch (error) {
         throw new Error(error);
@@ -220,32 +220,32 @@ export default new Vuex.Store({
     },
     async initMap(context, mapId) {
       mapboxgl.accessToken =
-        'pk.eyJ1Ijoiam9leWtsZWUiLCJhIjoiMlRDV2lCSSJ9.ZmGAJU54Pa-z8KvwoVXVBw';
+        "pk.eyJ1Ijoiam9leWtsZWUiLCJhIjoiMlRDV2lCSSJ9.ZmGAJU54Pa-z8KvwoVXVBw";
 
       const map = new mapboxgl.Map({
         container: mapId,
-        style: 'mapbox://styles/mapbox/streets-v11',
+        style: "mapbox://styles/mapbox/streets-v11",
         center: [-73.975866, 40.676966], // starting position [lng, lat]
         zoom: 9 // starting zoom
       });
 
       map.scrollZoom.disable();
       const nav = new mapboxgl.NavigationControl();
-      map.addControl(nav, 'bottom-right');
+      map.addControl(nav, "bottom-right");
 
-      context.commit('initMap', map);
-      context.commit('addMapLayers');
+      context.commit("initMap", map);
+      context.commit("addMapLayers");
     },
     // user
     async login(context, data) {
       try {
         const options = {
-          method: 'POST',
+          method: "POST",
           headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
+            Accept: "application/json",
+            "Content-Type": "application/json"
           },
-          credentials: 'include',
+          credentials: "include",
           body: JSON.stringify(data)
         };
 
@@ -254,22 +254,22 @@ export default new Vuex.Store({
         result = await result.json();
 
         if (result.token) {
-          alert('login successful');
+          alert("login successful");
 
-          context.commit('setAuthd', true);
-          context.commit('setUsername', result.user.username);
+          context.commit("setAuthd", true);
+          context.commit("setUsername", result.user.username);
 
           Router.push({
-            path: '/'
+            path: "/"
           });
         } else {
-          alert('login unsuccesful');
+          alert("login unsuccesful");
 
-          context.commit('setAuthd', false);
-          context.commit('setUsername', null);
+          context.commit("setAuthd", false);
+          context.commit("setUsername", null);
 
           Router.push({
-            path: '/login'
+            path: "/login"
           });
         }
       } catch (err) {
@@ -279,10 +279,10 @@ export default new Vuex.Store({
     async register(context, data) {
       try {
         const options = {
-          method: 'POST',
+          method: "POST",
           headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
+            Accept: "application/json",
+            "Content-Type": "application/json"
           },
           // credentials: 'include',
           body: JSON.stringify(data)
@@ -296,11 +296,11 @@ export default new Vuex.Store({
         result = await result.json();
 
         if (result.token) {
-          alert('signup successful');
-          Router.push({ path: '/login' });
+          alert("signup successful");
+          Router.push({ path: "/login" });
         } else {
-          alert('signup unsuccesful');
-          Router.push({ path: '/signup' });
+          alert("signup unsuccesful");
+          Router.push({ path: "/signup" });
         }
       } catch (err) {
         throw new Error(err);
@@ -308,12 +308,12 @@ export default new Vuex.Store({
     },
     async forgotPassword(context, data) {
       const options = {
-        method: 'POST',
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
+          Accept: "application/json",
+          "Content-Type": "application/json"
         },
-        credentials: 'include',
+        credentials: "include",
         body: JSON.stringify(data)
       };
 
@@ -324,18 +324,18 @@ export default new Vuex.Store({
 
       result = await result.json();
 
-      if (result.status === 'success') {
+      if (result.status === "success") {
         alert(result.message);
       }
     },
     async resetPassword(context, data) {
       const options = {
-        method: 'POST',
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
+          Accept: "application/json",
+          "Content-Type": "application/json"
         },
-        credentials: 'include',
+        credentials: "include",
         body: JSON.stringify(data)
       };
 
@@ -346,23 +346,23 @@ export default new Vuex.Store({
 
       result = await result.json();
 
-      if (result.status === 'success') {
+      if (result.status === "success") {
         Router.push({
-          path: 'login'
+          path: "login"
         });
       } else {
-        alert('password reset unsuccessful');
+        alert("password reset unsuccessful");
       }
     },
     async logout(context) {
       try {
         const options = {
-          method: 'POST',
+          method: "POST",
           headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
+            Accept: "application/json",
+            "Content-Type": "application/json"
           },
-          credentials: 'include',
+          credentials: "include",
           body: JSON.stringify({})
         };
 
@@ -372,14 +372,14 @@ export default new Vuex.Store({
         );
         result = await result.json();
 
-        if (result.status === 'success') {
-          context.commit('setUsername', null);
-          context.commit('setAuthd', false);
+        if (result.status === "success") {
+          context.commit("setUsername", null);
+          context.commit("setAuthd", false);
           Router.push({
-            path: '/'
+            path: "/"
           });
         } else {
-          alert('logout incomplete / error occured!');
+          alert("logout incomplete / error occured!");
         }
       } catch (err) {
         throw new Error(err);
@@ -388,23 +388,23 @@ export default new Vuex.Store({
     async checkAuth(context) {
       try {
         const options = {
-          method: 'GET',
+          method: "GET",
           headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
+            Accept: "application/json",
+            "Content-Type": "application/json"
           },
-          credentials: 'include'
+          credentials: "include"
         };
 
         let result = await fetch(`${API_BASE_URL}/api/v1/users/me`, options);
         result = await result.json();
 
-        if (result.status === 'success') {
-          context.commit('setAuthd', true);
-          context.commit('setUsername', result.username);
+        if (result.status === "success") {
+          context.commit("setAuthd", true);
+          context.commit("setUsername", result.username);
         } else {
-          context.commit('setAuthd', false);
-          context.commit('setUsername', null);
+          context.commit("setAuthd", false);
+          context.commit("setUsername", null);
         }
       } catch (error) {
         // throw new Error(error);

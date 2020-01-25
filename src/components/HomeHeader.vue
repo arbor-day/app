@@ -1,11 +1,16 @@
 <template>
   <header class="header">
     <!-- <img class="header__img" src="../assets/MoreTrees_Logo_Arboret-nobg.png" /> -->
-    <h1 class="header__title">“It's always a great day to plant a tree in NYC.” <span> - MoreTrees.nyc</span></h1>
+    <h1 class="header__title">
+      “It's always a great day to plant a tree in NYC.”
+      <span> - MoreTrees.nyc</span>
+    </h1>
     <!-- <h1 class="header__title">More Trees NYC</h1> -->
     <div class="cta">
       <button class="cta__button"><a href="#about">Get Started</a></button>
-      <button class="cta__button"><router-link class="nav__link" to="/submit">Submit</router-link></button>
+      <button class="cta__button">
+        <router-link class="nav__link" to="/submit">Submit</router-link>
+      </button>
     </div>
   </header>
 </template>
@@ -32,38 +37,37 @@ export default {
   text-align: center;
   padding: 2rem 3rem;
 
-  @media screen and (max-width:600px){
-      // align-items: center;
-      justify-content: center;
-      padding: 0.5rem 0.5rem;
-    }
+  @media screen and (max-width: 600px) {
+    // align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.5rem;
+  }
 
   &__title {
-    background-color:white;
+    background-color: white;
     max-width: 30rem;
     margin-top: 0.8rem;
     font-weight: 900;
     font-size: 2.35rem;
     margin-bottom: 1rem;
-    padding:1rem;
+    padding: 1rem;
     border: 2px solid #eee;
     box-shadow: 4px 4px #eee;
-    font-weight:100;
-    text-align:left;
+    font-weight: 100;
+    text-align: left;
 
     span {
       font-size: 1rem;
     }
 
-    @media screen and (max-width:600px){
-      font-size:0.8rem;
+    @media screen and (max-width: 600px) {
+      font-size: 0.8rem;
     }
   }
 
-
   .cta {
     display: flex;
-    width:100%;
+    width: 100%;
 
     &__button {
       border: 2px solid black;
@@ -75,10 +79,9 @@ export default {
       width: 160px;
       box-shadow: 3px 3px black;
 
-    @media screen and (max-width:600px){
-          width: 50%;
-    }
-      
+      @media screen and (max-width: 600px) {
+        width: 50%;
+      }
     }
 
     &__button:hover {

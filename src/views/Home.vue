@@ -5,17 +5,18 @@
       <section class="section section__map">
         <h2 class="section__map-title">Empty Tree Beds in NYC</h2>
         <div class="section__map-container">
-          <MapView/>
+          <MapView />
         </div>
-        <p class="section__map-description">We're mapping empty tree beds in NYC. All of these locations have been contributed by curious citizens.</p>
+        <p class="section__map-description">
+          We're mapping empty tree beds in NYC. All of these locations have been
+          contributed by curious citizens.
+        </p>
       </section>
 
       <!-- section project -->
       <section id="about" class="section section__project">
         <h2 class="section__title">Map, Plant, & Maintain</h2>
-        <h3
-          class="section__subtitle"
-        ></h3>
+        <h3 class="section__subtitle"></h3>
         <div class="section__body section__body--3-col">
           <div class="section__card section__card--map">
             <h3 class="section__card__title">Map</h3>
@@ -30,9 +31,19 @@
         <div class="section__text section__text--centered">
           <h3 class="section__subtitle">Our goals are to:</h3>
           <ol class="section__list">
-            <li><span class="bold">Map</span>: Continually map empty tree beds where trees can be planted</li>
-            <li><span class="bold">Plant</span>: Periodically request the city to plant trees based on our map, and</li>
-            <li><span class="bold">Maintain</span>: Constantly inspire New Yorkers to help care for the street trees and become New York City tree stewards.</li>
+            <li>
+              <span class="bold">Map</span>: Continually map empty tree beds
+              where trees can be planted
+            </li>
+            <li>
+              <span class="bold">Plant</span>: Periodically request the city to
+              plant trees based on our map, and
+            </li>
+            <li>
+              <span class="bold">Maintain</span>: Constantly inspire New Yorkers
+              to help care for the street trees and become New York City tree
+              stewards.
+            </li>
           </ol>
         </div>
       </section>
@@ -90,47 +101,47 @@ export default {
   padding: 3rem 0;
 
   // ---------------------- faq
-  &__faq{
-    background-color: #92D3F5;
+  &__faq {
+    background-color: #92d3f5;
   }
 
   // ---------------------- map
-  &__map{
+  &__map {
     position: relative;
-    width:100%;
+    width: 100%;
     height: 60vh;
 
-    &-title{
-      padding:1rem;
-      position:absolute;
-      top:1rem;
-      left:1rem;
-      border:2px solid black;
-      background-color:white;
-      max-width:400px;
-      text-align:left;
+    &-title {
+      padding: 1rem;
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      border: 2px solid black;
+      background-color: white;
+      max-width: 400px;
+      text-align: left;
       z-index: 1000;
-      font-size:1.2rem;
-      font-weight:100;
+      font-size: 1.2rem;
+      font-weight: 100;
     }
 
-    &-description{
-      font-size:1rem;
-      position:absolute;
-      bottom:0;
-      width:100%;
-      text-align:center;
-      margin-bottom:-2rem;
+    &-description {
+      font-size: 1rem;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      margin-bottom: -2rem;
     }
 
-    &-container{
-      padding:2rem;
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
+    &-container {
+      padding: 2rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
       height: 100%;
-      z-index:0;
+      z-index: 0;
     }
   }
 
@@ -146,16 +157,16 @@ export default {
       justify-content: space-around;
     }
 
-    li{
-      line-height:1.4;
+    li {
+      line-height: 1.4;
       font-weight: 100;
 
-      .bold{
-        font-weight:bold;
+      .bold {
+        font-weight: bold;
       }
     }
-    li:not(:last-child){
-      margin:1rem 0;
+    li:not(:last-child) {
+      margin: 1rem 0;
     }
   }
   &__title {
@@ -195,12 +206,12 @@ export default {
     &--3-col {
       grid-template-columns: 1fr 1fr 1fr;
       grid-column-gap: 1rem;
-      max-width:600px;
-      margin:2rem auto;
+      max-width: 600px;
+      margin: 2rem auto;
 
-      @media screen and (max-width: 600px){
+      @media screen and (max-width: 600px) {
         // grid-template-columns: 1fr;
-        max-width:300px;
+        max-width: 300px;
       }
     }
     &--2-col {
@@ -264,8 +275,8 @@ export default {
   &__project {
     margin-top: 6rem;
     // margin-bottom: 6rem;
-    background-color:#B1CC33;
-    color:black;
+    background-color: #b1cc33;
+    color: black;
   }
 
   &__how {
@@ -343,12 +354,10 @@ export default {
 }
 </style>
 
-
-
-/** 
+/**
 
 <!-- section how -->
-      <!-- <section class="section__how">
+<!-- <section class="section__how">
         <h2 class="section__title">Making Connections</h2>
         <div class="section__articles">
           <article class="section__article">
@@ -392,13 +401,13 @@ export default {
         </div>
       </section>-->
 
-      <!-- section operations -->
-      <!-- <section class="section__operations">
+<!-- section operations -->
+<!-- <section class="section__operations">
         <h2 class="section__title">How</h2>
         <div class="section__text">
           &nbsp;
         </div>
       </section>-->
-      <!--  -->
+<!--  -->
 
 */

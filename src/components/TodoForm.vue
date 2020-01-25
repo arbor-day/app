@@ -98,8 +98,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#todo-form{
-  background-color:white;
+#todo-form {
+  background-color: white;
 }
 p {
   text-align: left;

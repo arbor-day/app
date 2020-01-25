@@ -8,28 +8,53 @@
       <form @submit.prevent="submitForm" class="submit__form">
         <section class="submit__form-row">
           <fieldset class="submit__form-fieldset">
-            <legend class="submit__form-input-label" for="location">locate</legend>
-            <button @click.prevent="getLocation" class="get-location-btn">⊕</button>
+            <legend class="submit__form-input-label" for="location">
+              locate
+            </legend>
+            <button @click.prevent="getLocation" class="get-location-btn">
+              ⊕
+            </button>
           </fieldset>
           <fieldset class="submit__form-fieldset">
-            <legend class="submit__form-input-label" for="latitude">lat.</legend>
-            <input type="text" name="latitude" v-model="latitude" class="submit__form-input"/>
+            <legend class="submit__form-input-label" for="latitude">
+              lat.
+            </legend>
+            <input
+              type="text"
+              name="latitude"
+              v-model="latitude"
+              class="submit__form-input"
+            />
           </fieldset>
           <fieldset class="submit__form-fieldset">
-            <legend class="submit__form-input-label" for="longitude">lon.</legend>
-            <input type="text" name="longitude" v-model="longitude" class="submit__form-input"/>
+            <legend class="submit__form-input-label" for="longitude">
+              lon.
+            </legend>
+            <input
+              type="text"
+              name="longitude"
+              v-model="longitude"
+              class="submit__form-input"
+            />
           </fieldset>
         </section>
 
-        <section class="submit__form-row"> 
+        <section class="submit__form-row">
           <fieldset class="submit__form-fieldset">
-          <legend class="submit__form-input-label" for="description">description</legend>
-          <input class="submit__form-input" type="text" name="description" v-model="description" />
+            <legend class="submit__form-input-label" for="description">
+              description
+            </legend>
+            <input
+              class="submit__form-input"
+              type="text"
+              name="description"
+              v-model="description"
+            />
           </fieldset>
         </section>
 
-        <section class="submit__form-row"> 
-        <button class="submit__form-btn">submit!</button>
+        <section class="submit__form-row">
+          <button class="submit__form-btn">submit!</button>
         </section>
       </form>
     </div>
@@ -53,13 +78,12 @@ export default {
     getLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.watchPosition(position => {
-          if(position){
+          if (position) {
             this.latitude = position.coords.latitude;
             this.longitude = position.coords.longitude;
           } else {
-            alert("geo location is not available or turned off")
+            alert("geo location is not available or turned off");
           }
-          
         });
       } else {
         // x.innerHTML = "Geolocation is not supported by this browser.";
@@ -150,26 +174,22 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-
-
-#submit{
-  width:100%;
-  height:100vh;
+#submit {
+  width: 100%;
+  height: 100vh;
 }
 .submit__quick {
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 
   .submit__form {
     display: flex;
-    flex-direction:column;
-    max-width:320px;
+    flex-direction: column;
+    max-width: 320px;
 
     label {
       display: block;
@@ -187,31 +207,31 @@ export default {
       margin: 1rem auto;
     }
 
-    &-row{
-      display:flex;
-      width:100%;
+    &-row {
+      display: flex;
+      width: 100%;
     }
 
     &-fieldset {
       padding: 0.5rem;
-      flex-grow:1;
+      flex-grow: 1;
     }
 
-    &-input-label{
+    &-input-label {
       padding: 0 0.2rem;
     }
-    &-input{
-      padding:0.5rem;
-      border:0;
-      outline:0;
-      background-color:#eee;
-      width:100%;
+    &-input {
+      padding: 0.5rem;
+      border: 0;
+      outline: 0;
+      background-color: #eee;
+      width: 100%;
     }
   }
 }
 
-.get-location-btn{
-  width:2rem;
-  height:2rem;
+.get-location-btn {
+  width: 2rem;
+  height: 2rem;
 }
 </style>

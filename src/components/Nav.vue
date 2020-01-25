@@ -6,7 +6,6 @@
     </label>
 
     <menu class="nav__menu">
-      
       <div @click="closeMenu" class="nav__links">
         <router-link class="nav__link" to="/">Home</router-link>
         <router-link class="nav__link" to="/about">About</router-link>
@@ -15,10 +14,13 @@
 
       <div @click="closeMenu" class="nav__links">
         <div class="nav__links--authd" v-if="isAuthd">
-          <p>welcome {{ this.$store.state.user.username }}</p>|
+          <p>welcome {{ this.$store.state.user.username }}</p>
+          |
           <button @click.prevent="logout">logout</button>
         </div>
-        <router-link class="nav__link" v-else to="/login">Login/Register</router-link>
+        <router-link class="nav__link" v-else to="/login"
+          >Login/Register</router-link
+        >
       </div>
 
       <div @click="closeMenu" class="nav__links">
@@ -41,8 +43,8 @@ export default {
       return this.$store.dispatch("logout");
     },
     closeMenu() {
-      console.log('yo yo')
-      document.querySelector('.nav__toggle').checked = false;
+      console.log("yo yo");
+      document.querySelector(".nav__toggle").checked = false;
     }
   },
   mounted() {
@@ -69,86 +71,84 @@ export default {
     width: 4rem;
     height: 4rem;
     opacity: 0;
-    
 
-    &:hover ~ &-label{
-        color: #9EEBCF;
-        transform: translate(1px, 1px);
-        box-shadow: 2px 2px black;
+    &:hover ~ &-label {
+      color: #9eebcf;
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px black;
     }
 
-    &:active ~ &-label{
-        transform: translate(2px, 2px);
-        box-shadow: 1px 1px black;
+    &:active ~ &-label {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px black;
     }
 
-    &-label{
+    &-label {
       z-index: 1999;
       position: absolute;
       top: 1rem;
       left: 1rem;
       height: 4rem;
       width: 4rem;
-      border:2px solid black;
-      display:flex;
+      border: 2px solid black;
+      display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
       font-size: 0.8rem;
-      font-weight:thin;
-      transition:color 0.5s;
+      font-weight: thin;
+      transition: color 0.5s;
       background-color: white;
       box-shadow: 3px 3px black;
     }
   }
 
-  &__toggle:checked ~ &__menu{
+  &__toggle:checked ~ &__menu {
     display: flex;
   }
 
   &__menu {
-    width:100%;
-    height:100%;
-    background-color:#9EEBCF;
+    width: 100%;
+    height: 100%;
+    background-color: #9eebcf;
     position: fixed;
-    top:0rem;
-    left:0;
+    top: 0rem;
+    left: 0;
     display: none;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     z-index: 10;
   }
 
-  &__links{
+  &__links {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     font-size: 1.6rem;
-    width:100%;
-    max-width:300px;
-    margin:0 auto;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
 
-    @media screen and (max-width:600px) {
-      font-size:1rem;  
+    @media screen and (max-width: 600px) {
+      font-size: 1rem;
     }
 
-    @media screen and (max-width:400px) {
-      font-size:0.8rem;  
+    @media screen and (max-width: 400px) {
+      font-size: 0.8rem;
     }
-
   }
 
-
-  &__link{
-    margin-bottom:1rem;
+  &__link {
+    margin-bottom: 1rem;
   }
-  &__link:link, &__link:visited{
+  &__link:link,
+  &__link:visited {
     color: black;
     text-decoration: none;
-    text-align:center;
+    text-align: center;
   }
 
-  &__link:hover{
+  &__link:hover {
     color: white;
     text-decoration: underline;
   }
