@@ -149,7 +149,7 @@ export default {
         let video;
         // NOTE: Set up is here
         sketch.setup = () => {
-          sketch.createCanvas(320, 180);
+          sketch.createCanvas(320, 240);
           video = sketch.createCapture({
             audio: false,
             video: {
@@ -158,7 +158,7 @@ export default {
               }
             }
           });
-          video.size(320, 180);
+          video.size(320, 240);
           video.hide();
         }; // NOTE: Draw is here
         sketch.draw = () => {
