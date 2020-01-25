@@ -32,6 +32,12 @@ export default {
   text-align: center;
   padding: 2rem 3rem;
 
+  @media screen and (max-width:600px){
+      // align-items: center;
+      justify-content: center;
+      padding: 0.5rem 0.5rem;
+    }
+
   &__title {
     background-color:white;
     max-width: 30rem;
@@ -48,11 +54,16 @@ export default {
     span {
       font-size: 1rem;
     }
+
+    @media screen and (max-width:600px){
+      font-size:0.8rem;
+    }
   }
 
 
   .cta {
     display: flex;
+    width:100%;
 
     &__button {
       border: 2px solid black;
@@ -63,6 +74,11 @@ export default {
       background: white;
       width: 160px;
       box-shadow: 3px 3px black;
+
+    @media screen and (max-width:600px){
+          width: 50%;
+    }
+      
     }
 
     &__button:hover {

@@ -1,18 +1,25 @@
 <template>
   <div id="dashboard">
-    <section class="dashboard__titles">
-      <h3>Tree Planting Opportunity Map</h3>
-      <h3>Add trees to the map</h3>
-    </section>
+    
     <section class="dashboard__main">
-      <!-- map view -->
-      <MapView />
       <!-- table view -->
-      <div class="table">
-        <TodoForm />
+      <div class="dashboard__main-table">
         <TodoList />
+      </div> 
+      <!-- map section -->
+      <div class="dashboard__main-map">
+        <!-- submission form -->
+        <div class="dashboard__main-map-controls">
+          <TodoForm />
+        </div>
+        <div class="dashboard__main-map-view">
+        <!-- map view -->
+          <MapView />
+        </div>
       </div>
+      
     </section>
+
   </div>
 </template>
 
@@ -36,37 +43,62 @@ export default {
 
 <style scoped lang="scss">
 #dashboard {
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  grid-template-rows: auto 1fr;
+  padding: 6rem 0.2rem 1rem 0.2rem;
 }
 
-.dashboard__titles {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 20px;
-  text-align: left;
-  h3 {
-    font-size: 1rem;
-  }
-}
 
 .dashboard__main {
   height: 100%;
-  max-height: calc(100% - 3rem);
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 20px;
-  // padding: 0 1rem;
+  grid-column-gap: 0.5rem;
+  position:relative;
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+
+  &-map{
+    position:relative;
+    width:100%;
+    height:100%;
+
+    &-controls{
+      position: absolute;
+      top:0.2rem;
+      left:0;
+      z-index:1000;
+      width:100%;
+      padding:1rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    &-view{
+      width:100%;
+      height:100%;
+      position: absolute;
+      top:0;
+      left:0;
+    }
+  }
+
+  &-table{
+    // padding:1rem;
+    width: 100%;
+    height: 100%;
+  }
 }
 
-.table {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-rows: 6rem calc(100vh - 11.25rem);
-  grid-row-gap: 20px;
-}
+// .table {
+//   width: 100%;
+//   height: 100%;
+//   display: grid;
+//   grid-template-rows: 6rem calc(100vh - 11.25rem);
+//   grid-row-gap: 20px;
+// }
 </style>

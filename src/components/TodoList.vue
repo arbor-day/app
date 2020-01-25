@@ -112,7 +112,7 @@ export default {
   height: 100%;
   width: 100%;
   overflow-y: scroll;
-  border: 1px solid black;
+  border: 2px solid black;
   box-shadow: 4px 4px 0px black;
 }
 table {

@@ -231,7 +231,7 @@ export default new Vuex.Store({
 
       map.scrollZoom.disable();
       const nav = new mapboxgl.NavigationControl();
-      map.addControl(nav, 'top-right');
+      map.addControl(nav, 'bottom-right');
 
       context.commit('initMap', map);
       context.commit('addMapLayers');
