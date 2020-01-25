@@ -18,7 +18,7 @@ export default {
 <style scoped lang="scss">
 .header {
   // background-color: aliceblue;
-  border: 2px solid black;
+  // border: 2px solid black;
   background-size: cover;
   height: 90vh;
   display: flex;

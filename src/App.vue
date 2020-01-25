@@ -25,20 +25,19 @@ export default {
 
 html {
   width: 100%;
-  height: 100%;
+  // height: 100%;
 }
 
 body {
   width: 100%;
-  height: 100%;
-  font-size: 16px;
+  // height: 100%;
+  font-size: 62.5%;
 }
 
 #app {
   padding: 0.25rem 1rem 0 1rem;
-  height: 100%;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: 1fr;
   font-family: "merriweather", "serif", "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
