@@ -43,7 +43,6 @@ export default {
       return this.$store.dispatch("logout");
     },
     closeMenu() {
-      console.log("yo yo");
       document.querySelector(".nav__toggle").checked = false;
     }
   },
