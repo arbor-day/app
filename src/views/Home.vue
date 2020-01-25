@@ -2,6 +2,13 @@
   <div class="home">
     <HomeHeader />
     <main class="main">
+      <section class="section section__map">
+        <div class="section__map-container">
+          <h2 class="section__map-title">Empty Tree Beds in NYC</h2>
+          <MapView/>
+        </div>
+      </section>
+
       <!-- section project -->
       <section class="section section__project">
         <h2 class="section__title">The Project</h2>
@@ -44,60 +51,7 @@
           </div>
         </section>
       </section>
-
-      <!-- section how -->
-      <!-- <section class="section__how">
-        <h2 class="section__title">Making Connections</h2>
-        <div class="section__articles">
-          <article class="section__article">
-            <header class="section__article__header section__article__header--right">
-              <div class="section__article__header__container">
-                <h2 class="section__article__header__title">Connecting with the City</h2>
-                <p class="section__article__header__text">
-                  Whether you're new to the city or a native New Yorker, we all have one thing in common: we spend a lot of time walking around.
-                  You can help the MoreTrees project by keeping your eyes 👀 out for empty tree beds and submitting them to our database.
-                  You can learn more about ways of <a href="#"> engaging with the city here</a>.
-                </p>
-              </div>
-            </header>
-            <div class="section__article__image section__article__image--city"></div>
-          </article>
-          <article class="section__article">
-            <header class="section__article__header section__article__header--left">
-              <div class="section__article__header__container">
-                <h2 class="section__article__header__title">Connecting with You</h2>
-                <p class="section__article__header__text">
-                  MoreTrees was started by Andy and Joey, 2 New York transplants who were looking for a way to bring all the benefits of street trees to as many people across their neighborhood as possible.
-                  Their hope was that other curious citizens like you could also bring trees to your neighborhood simply by helping to map and submit them to the city.
-                  You can learn more about ways of <a href="#">getting involved in tree stewardship here</a>.
-                </p>
-              </div>
-            </header>
-            <div class="section__article__image section__article__image--you"></div>
-          </article>
-          <article class="section__article">
-            <header class="section__article__header section__article__header--right">
-              <div class="section__article__header__container">
-                <h2 class="section__article__header__title">Connecting with the Environment</h2>
-                <p class="section__article__header__text">
-                  We live in a concrete jungle, but there are many ways to connect with the wonders of the environment right here in the city. Becoming a tree steward or caring for the street trees right in front of your house is a great way to get involved.
-                  You can learn more about the <a href="#">urban environment here</a>.
-                </p>
-              </div>
-            </header>
-            <div class="section__article__image section__article__image--environment"></div>
-          </article>
-        </div>
-      </section>-->
-
-      <!-- section operations -->
-      <!-- <section class="section__operations">
-        <h2 class="section__title">How</h2>
-        <div class="section__text">
-          &nbsp;
-        </div>
-      </section>-->
-      <!--  -->
+      <!-- FAQ -->
       <section class="section">
         <h2 class="section__title">FAQ</h2>
         <FAQ />
@@ -112,13 +66,15 @@
 import FAQ from "@/components/FAQ.vue";
 import AppFooter from "@/components/Footer.vue";
 import HomeHeader from "@/components/HomeHeader.vue";
+import MapView from "@/components/MapView.vue";
 
 export default {
   name: "home",
   components: {
     FAQ,
     AppFooter,
-    HomeHeader
+    HomeHeader,
+    MapView
   }
 };
 </script>
@@ -130,6 +86,33 @@ export default {
 
 .section {
   margin: 2rem 0rem;
+
+  &__map{
+    position: relative;
+    width:100%;
+    height: 60vh;
+
+    &-title{
+      padding:2rem;
+      position:absolute;
+      top:1rem;
+      left:1rem;
+      border:2px solid black;
+      background-color:white;
+      max-width:300px;
+      text-align:left;
+      z-index: 1000;
+    }
+
+    &-container{
+      padding:2rem;
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height: 100%;
+    }
+  }
 
   &__list {
     margin-left: 2rem;
@@ -146,7 +129,7 @@ export default {
     font-size: 2.6rem;
     width: 100%;
     position: relative;
-    color: white;
+    color: black;
     margin-bottom: 2rem;
   }
 
@@ -171,18 +154,18 @@ export default {
     }
   }
 
-  &__title::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    width: 600px;
-    height: 100%;
-    border: 2px solid black;
-    background-color: black;
-    z-index: -1;
-  }
+  // &__title::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 50%;
+  //   transform: translate(-50%, 0%);
+  //   width: 600px;
+  //   height: 100%;
+  //   border: 2px solid black;
+  //   background-color: black;
+  //   z-index: -1;
+  // }
 
   &__body {
     width: 100%;
@@ -253,8 +236,8 @@ export default {
   }
 
   &__project {
-    margin-top: 4rem;
-    margin-bottom: 2rem;
+    margin-top: 6rem;
+    margin-bottom: 10rem;
   }
 
   &__how {
@@ -331,3 +314,63 @@ export default {
   }
 }
 </style>
+
+
+
+/** 
+
+<!-- section how -->
+      <!-- <section class="section__how">
+        <h2 class="section__title">Making Connections</h2>
+        <div class="section__articles">
+          <article class="section__article">
+            <header class="section__article__header section__article__header--right">
+              <div class="section__article__header__container">
+                <h2 class="section__article__header__title">Connecting with the City</h2>
+                <p class="section__article__header__text">
+                  Whether you're new to the city or a native New Yorker, we all have one thing in common: we spend a lot of time walking around.
+                  You can help the MoreTrees project by keeping your eyes 👀 out for empty tree beds and submitting them to our database.
+                  You can learn more about ways of <a href="#"> engaging with the city here</a>.
+                </p>
+              </div>
+            </header>
+            <div class="section__article__image section__article__image--city"></div>
+          </article>
+          <article class="section__article">
+            <header class="section__article__header section__article__header--left">
+              <div class="section__article__header__container">
+                <h2 class="section__article__header__title">Connecting with You</h2>
+                <p class="section__article__header__text">
+                  MoreTrees was started by Andy and Joey, 2 New York transplants who were looking for a way to bring all the benefits of street trees to as many people across their neighborhood as possible.
+                  Their hope was that other curious citizens like you could also bring trees to your neighborhood simply by helping to map and submit them to the city.
+                  You can learn more about ways of <a href="#">getting involved in tree stewardship here</a>.
+                </p>
+              </div>
+            </header>
+            <div class="section__article__image section__article__image--you"></div>
+          </article>
+          <article class="section__article">
+            <header class="section__article__header section__article__header--right">
+              <div class="section__article__header__container">
+                <h2 class="section__article__header__title">Connecting with the Environment</h2>
+                <p class="section__article__header__text">
+                  We live in a concrete jungle, but there are many ways to connect with the wonders of the environment right here in the city. Becoming a tree steward or caring for the street trees right in front of your house is a great way to get involved.
+                  You can learn more about the <a href="#">urban environment here</a>.
+                </p>
+              </div>
+            </header>
+            <div class="section__article__image section__article__image--environment"></div>
+          </article>
+        </div>
+      </section>-->
+
+      <!-- section operations -->
+      <!-- <section class="section__operations">
+        <h2 class="section__title">How</h2>
+        <div class="section__text">
+          &nbsp;
+        </div>
+      </section>-->
+      <!--  -->
+
+*/

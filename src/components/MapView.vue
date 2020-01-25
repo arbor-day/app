@@ -21,7 +21,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: aliceblue;
-  border: 1px solid black;
+  border: 2px solid black;
   box-shadow: 4px 4px 0px black;
 }
 </style>

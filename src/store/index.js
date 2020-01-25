@@ -229,6 +229,10 @@ export default new Vuex.Store({
         zoom: 9 // starting zoom
       });
 
+      map.scrollZoom.disable();
+      const nav = new mapboxgl.NavigationControl();
+      map.addControl(nav, 'top-right');
+
       context.commit('initMap', map);
       context.commit('addMapLayers');
     },
