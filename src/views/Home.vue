@@ -11,7 +11,7 @@
       </section>
 
       <!-- section project -->
-      <section class="section section__project">
+      <section id="about" class="section section__project">
         <h2 class="section__title">Map, Plant, & Maintain</h2>
         <h3
           class="section__subtitle"

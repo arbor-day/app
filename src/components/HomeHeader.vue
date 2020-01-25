@@ -4,8 +4,8 @@
     <h1 class="header__title">“It's always a great day to plant a tree in NYC.” <span> - MoreTrees.nyc</span></h1>
     <!-- <h1 class="header__title">More Trees NYC</h1> -->
     <div class="cta">
-      <button class="cta__button">Get Started</button>
-      <button class="cta__button">Submit</button>
+      <button class="cta__button"><a href="#about">Get Started</a></button>
+      <button class="cta__button"><router-link class="nav__link" to="/submit">Submit</router-link></button>
     </div>
   </header>
 </template>

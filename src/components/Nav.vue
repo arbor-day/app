@@ -7,13 +7,13 @@
 
     <menu class="nav__menu">
       
-      <div class="nav__links">
+      <div @click="closeMenu" class="nav__links">
         <router-link class="nav__link" to="/">Home</router-link>
         <router-link class="nav__link" to="/about">About</router-link>
         <router-link class="nav__link" to="/submit">Submit</router-link>
       </div>
 
-      <div class="nav__links">
+      <div @click="closeMenu" class="nav__links">
         <div class="nav__links--authd" v-if="isAuthd">
           <p>welcome {{ this.$store.state.user.username }}</p>|
           <button @click.prevent="logout">logout</button>
@@ -21,7 +21,7 @@
         <router-link class="nav__link" v-else to="/login">Login/Register</router-link>
       </div>
 
-      <div class="nav__links">
+      <div @click="closeMenu" class="nav__links">
         <router-link class="nav__link" to="/dashboard">Dashboard</router-link>
       </div>
     </menu>
@@ -39,6 +39,10 @@ export default {
   methods: {
     logout() {
       return this.$store.dispatch("logout");
+    },
+    closeMenu() {
+      console.log('yo yo')
+      document.querySelector('.nav__toggle').checked = false;
     }
   },
   mounted() {
