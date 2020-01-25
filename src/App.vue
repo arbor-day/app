@@ -35,7 +35,6 @@ body {
 }
 
 #app {
-  padding: 0.25rem 1rem 0 1rem;
   display: grid;
   grid-template-rows: 1fr;
   font-family: "merriweather", "serif", "Avenir", Helvetica, Arial, sans-serif;
