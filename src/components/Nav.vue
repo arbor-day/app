@@ -58,8 +58,7 @@ export default {
   top: 0px;
   left: 0px;
   height: 6rem;
-  width: 100%;
-  z-index: 10000;
+  // width: 100%;
   // background-color:pink;
 
   &__toggle {

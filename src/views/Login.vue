@@ -56,7 +56,7 @@ export default {
 <style scoped lang="scss">
 #login {
   width: 100%;
-  height: 100%;
+  height: 100vh;
 
   .login-container {
     width: 100%;

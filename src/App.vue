@@ -43,4 +43,8 @@ body {
   text-align: center;
   color: #2c3e50;
 }
+
+.router-view{
+  margin-top: 6rem;
+}
 </style>
