@@ -43,6 +43,7 @@ export default {
   height: 100vh;
   width: 100%;
   padding: 6rem 0.2rem 1rem 0.2rem;
+  z-index: -10;
 }
 
 .dashboard__main {

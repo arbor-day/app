@@ -100,12 +100,10 @@ export default {
   margin: 2rem 0rem 0 0;
   padding: 3rem 0;
 
-  // ---------------------- faq
   &__faq {
     background-color: #92d3f5;
   }
 
-  // ---------------------- map
   &__map {
     position: relative;
     width: 100%;
@@ -175,6 +173,7 @@ export default {
     position: relative;
     color: black;
     margin-bottom: 2rem;
+    z-index: 100;
   }
 
   &__subtitle {
@@ -239,6 +238,7 @@ export default {
     background-color: white;
     padding: 0.5rem;
     position: relative;
+    z-index: 100;
 
     &__title {
       position: absolute;
@@ -248,6 +248,7 @@ export default {
       text-align: center;
       background-color: black;
       color: white;
+      z-index: 100;
     }
 
     &--map {

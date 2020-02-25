@@ -44,7 +44,7 @@ body {
   color: #2c3e50;
 }
 
-.router-view{
+.router-view {
   margin-top: 6rem;
 }
 </style>
