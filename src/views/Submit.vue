@@ -8,48 +8,23 @@
       <form @submit.prevent="submitForm" class="submit__form">
         <section class="submit__form-row">
           <fieldset class="submit__form-fieldset">
-            <legend class="submit__form-input-label" for="location">
-              locate
-            </legend>
-            <button @click.prevent="getLocation" class="get-location-btn">
-              ⊕
-            </button>
+            <legend class="submit__form-input-label" for="location">locate</legend>
+            <button @click.prevent="getLocation" class="get-location-btn">⊕</button>
           </fieldset>
           <fieldset class="submit__form-fieldset">
-            <legend class="submit__form-input-label" for="latitude">
-              lat.
-            </legend>
-            <input
-              type="text"
-              name="latitude"
-              v-model="latitude"
-              class="submit__form-input"
-            />
+            <legend class="submit__form-input-label" for="latitude">lat.</legend>
+            <input type="text" name="latitude" v-model="latitude" class="submit__form-input" />
           </fieldset>
           <fieldset class="submit__form-fieldset">
-            <legend class="submit__form-input-label" for="longitude">
-              lon.
-            </legend>
-            <input
-              type="text"
-              name="longitude"
-              v-model="longitude"
-              class="submit__form-input"
-            />
+            <legend class="submit__form-input-label" for="longitude">lon.</legend>
+            <input type="text" name="longitude" v-model="longitude" class="submit__form-input" />
           </fieldset>
         </section>
 
         <section class="submit__form-row">
           <fieldset class="submit__form-fieldset">
-            <legend class="submit__form-input-label" for="description">
-              description
-            </legend>
-            <input
-              class="submit__form-input"
-              type="text"
-              name="description"
-              v-model="description"
-            />
+            <legend class="submit__form-input-label" for="description">description</legend>
+            <input class="submit__form-input" type="text" name="description" v-model="description" />
           </fieldset>
         </section>
 
@@ -75,6 +50,22 @@ export default {
   },
   computed: {},
   methods: {
+    showError(error) {
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          alert("User denied the request for Geolocation.");
+          break;
+        case error.POSITION_UNAVAILABLE:
+          alert("Location information is unavailable.");
+          break;
+        case error.TIMEOUT:
+          alert("The request to get user location timed out.");
+          break;
+        case error.UNKNOWN_ERROR:
+          alert("An unknown error occurred.");
+          break;
+      }
+    },
     getLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.watchPosition(position => {
@@ -84,10 +75,7 @@ export default {
           } else {
             alert("geo location is not available or turned off");
           }
-        });
-      } else {
-        // x.innerHTML = "Geolocation is not supported by this browser.";
-        alert("geo location is not available or turned off");
+        }, this.showError);
       }
     },
     async getVideo() {
@@ -147,20 +135,24 @@ export default {
     const makeP5 = () => {
       const script = function(sketch) {
         let video;
+        const videoOptions = {
+          audio: false,
+          video: {
+            width: { min: 360, ideal: 360, max: 360 },
+            height: { min: 270, ideal: 270, max: 270 },
+            facingMode: {
+              exact: "environment"
+            }
+          }
+        };
+
         // NOTE: Set up is here
         sketch.setup = () => {
-          sketch.createCanvas(320, 240);
-          video = sketch.createCapture({
-            audio: false,
-            video: {
-              facingMode: {
-                exact: "environment"
-              }
-            }
-          });
-          video.size(320, 240);
+          sketch.createCanvas(360, 270);
+          video = sketch.createCapture(videoOptions);
           video.hide();
-        }; // NOTE: Draw is here
+          // video.size(360, 270);
+        };
         sketch.draw = () => {
           sketch.background(0);
           sketch.image(video, 0, 0, sketch.width, sketch.height);
