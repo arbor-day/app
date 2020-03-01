@@ -4,7 +4,7 @@
     <div class="submit__quick">
       <!-- canvas -->
       <img src="#" alt="image-placeholder" id="photoData" />
-      <div id="myCanvas"></div>
+      <button class="upload-btn" @click="selectFile">📷</button>
       <!-- form -->
       <div class="form-group">
         <form class="submit__form">
@@ -47,20 +47,17 @@
             id="file-upload"
             @change="handleFileSelection"
           />
-          <!-- <section class="submit__form-row">
+          <section class="submit__form-row">
           <fieldset class="submit__form-fieldset">
             <legend class="submit__form-input-label" for="description">description</legend>
             <input class="submit__form-input" type="text" name="description" v-model="description" />
           </fieldset>
-          </section>-->
+          </section>
         </form>
         <section class="submit__form-row submit__form-row--submit">
-          <button class="submit__form-upload-btn" @click="selectFile">
-            photos
-          </button>
-          <button class="submit__form-btn" @click.prevent="submitForm"></button>
+          <button class="submit__form-btn" @click.prevent="submitForm">Submit</button>
           <button class="submit__form-new-btn" @click="resetToCamera">
-            📷
+            ➕
           </button>
         </section>
       </div>
@@ -69,7 +66,7 @@
 </template>
 
 <script>
-const P5 = require("p5");
+// const P5 = require("p5");
 export default {
   name: "submit",
   data() {
@@ -111,36 +108,6 @@ export default {
         }, this.showError);
       }
     },
-    // async getVideo() {
-    //   let stream;
-    //   try {
-    //     stream = await navigator.mediaDevices.getUserMedia({
-    //       video: true
-    //     });
-
-    //     this.videoElement.srcObject = stream;
-    //     this.videoElement.play();
-
-    //     // canvas
-    //     const canvas = this.$refs.mycanvas;
-    //     const ctx = canvas.getContext("2d");
-
-    //     const renderVideoToCanvas = () => {
-    //       window.requestAnimationFrame(renderVideoToCanvas);
-    //       ctx.drawImage(
-    //         this.videoElement,
-    //         0,
-    //         0,
-    //         this.videoElement.width,
-    //         this.videoElement.height
-    //       );
-    //     };
-
-    //     window.requestAnimationFrame(renderVideoToCanvas);
-    //   } catch (err) {
-    //     return err;
-    //   }
-    // },
     submitForm() {
       if (this.photoData) {
         const data = {
@@ -150,26 +117,8 @@ export default {
           photo: this.photoData
         };
         this.$store.dispatch("addTodo", data);
-      } else {
-        document.querySelector("#defaultCanvas0").toBlob(
-          blob => {
-            const photoData = blob;
-            photoData.name = `${Date.now()}.jpg`;
-
-            const data = {
-              latitude: this.latitude,
-              longitude: this.longitude,
-              description: this.description,
-              photo: photoData
-            };
-
-            this.$store.dispatch("addTodo", data);
-          },
-          "image/jpeg",
-          0.95
-        );
+        this.photoData = null;
       }
-      this.photoData = null;
     },
     selectFile() {
       const $fileUpload = document.querySelector("#file-upload");
@@ -192,43 +141,11 @@ export default {
       const $photo = document.querySelector("#photoData");
       $photo.style.display = "none";
       this.photoData = null;
+      this.selectFile();
     }
   },
   mounted() {
-    // this.getVideo();
     this.getLocation();
-
-    const makeP5 = () => {
-      const $myCanvas = document.querySelector("#myCanvas");
-      const script = function(sketch) {
-        let video;
-
-        // NOTE: Set up is here
-        sketch.setup = () => {
-          sketch.createCanvas($myCanvas.clientWidth, $myCanvas.clientHeight);
-
-          const videoOptions = {
-            audio: false,
-            video: {
-              width: $myCanvas.clientWidth,
-              height: $myCanvas.clientHeight,
-              facingMode: "user"
-            }
-          };
-          video = sketch.createCapture(videoOptions);
-          video.hide();
-          // video.size(360, 270);
-        };
-        sketch.draw = () => {
-          sketch.background(0);
-          if (video.loadedmetadata) {
-            sketch.image(video, 0, 0, sketch.width, sketch.height);
-          }
-        };
-      }; // NOTE: Use p5 as an instance mode
-      return new P5(script, $myCanvas);
-    };
-    this.myP5 = makeP5();
   }
 };
 </script>
@@ -237,7 +154,7 @@ export default {
 #submit {
   width: 100%;
   height: 100vh;
-  background-color: black;
+  background-color: #eee;
 }
 
 #photoData {
@@ -247,6 +164,8 @@ export default {
   max-width: 320px;
   z-index: 9999;
 }
+
+
 
 .submit__quick {
   width: 100%;
@@ -259,24 +178,30 @@ export default {
   position: relative;
   margin: 0 auto;
 
-  #myCanvas {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-  }
+  .upload-btn {
+      position:absolute;
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+      font-size: 0.5rem;
+      font-size:4rem;
+      background-color: yellow;
+      border:6px solid white;
+    }
+
 
   .form-group {
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(#00326F, 0.25);
     position: absolute;
-    bottom: 0;
+    bottom: 1rem;
     left: 0;
     z-index: 9999;
+    border:2px solid black;
+    border-radius:4px;
+    box-shadow:4px 4px 0 black;
   }
 
   .submit__form {
@@ -286,42 +211,17 @@ export default {
     }
 
     &-btn {
-      content: "";
-      background-color: #eee;
-      color: white;
-      font-size: 1.5rem;
-      border: 4px solid black;
-      border-radius: 50%;
-      width: 60px;
+      background-color:#00FD89;
+      color: black;
+      font-size: 1rem;
+      border:4px solid white;
+      padding: 0.5rem 1rem;
       height: 60px;
       position: relative;
       transition: background-color 0.5s;
       display: inline-block;
     }
 
-    &-btn:hover {
-      background-color: green;
-    }
-
-    &-btn::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      z-index: -1;
-      background-color: white;
-      transform: translate(-50%, -50%);
-    }
-
-    &-upload-btn {
-      width: 48px;
-      height: 48px;
-      border-radius: 4px;
-      font-size: 0.5rem;
-    }
 
     &-flip-btn {
       width: 48px;
@@ -331,8 +231,10 @@ export default {
     &-new-btn {
       width: 48px;
       height: 48px;
-      background: none;
-      border-radius: 4px;
+      background-color:yellow;
+      border-radius: 50%;
+      border:4px solid white;
+      color:black;
     }
 
     &-row {
@@ -366,6 +268,7 @@ export default {
       width: 100%;
       z-index: 9999;
       height: 1.6rem;
+      border-radius:2px;
     }
     &-input-file {
       display: none;
