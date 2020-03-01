@@ -193,10 +193,10 @@ export default {
   .form-group {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: calc(100% - 1rem);
     background-color: rgba(#00326F, 0.25);
     position: absolute;
-    bottom: 1rem;
+    bottom: 0.5rem;
     left: 0;
     z-index: 9999;
     border:2px solid black;
