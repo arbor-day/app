@@ -213,10 +213,12 @@ export default {
     &-btn {
       background-color:#00FD89;
       color: black;
-      font-size: 1rem;
+      font-size: 0.8rem;
       border:4px solid white;
-      padding: 0.5rem 1rem;
-      height: 60px;
+      padding: 0.1rem 1rem;
+      letter-spacing: 0.25ch;
+      border-radius:4px;
+      height: 48px;
       position: relative;
       transition: background-color 0.5s;
       display: inline-block;
@@ -240,12 +242,13 @@ export default {
     &-row {
       display: flex;
       width: 100%;
-      padding: 0.25rem 0.5rem;
+      padding: 0.1rem 0.5rem;
 
       &--submit {
         align-items: center;
         justify-content: space-around;
-        height: 6rem;
+        height: auto;
+        padding:0.5rem;
       }
     }
 
