@@ -14,7 +14,7 @@
 
       <div @click="closeMenu" class="nav__links">
         <div class="nav__links--authd" v-if="isAuthd">
-          <p>welcome {{ this.$store.state.user.username }}</p>
+          <p>welcome {{ this.$store.state.users.user.username }}</p>
           |
           <button @click.prevent="logout">logout</button>
         </div>
@@ -58,6 +58,7 @@ export default {
   top: 0px;
   right: 0px;
   height: 6rem;
+  z-index: 9999;
   // width: 100%;
   // background-color:pink;
 

@@ -48,7 +48,7 @@ export default {
           password: this.pass
         };
 
-        return this.$store.dispatch("register", data);
+        return this.$store.users.dispatch("register", data);
       } catch (error) {
         throw new Error(error);
       }

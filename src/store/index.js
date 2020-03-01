@@ -15,6 +15,6 @@ export default new Vuex.Store({
     todos: TodosState,
     geo: GeoState,
     map: MapState,
-    user: UserState
+    users: UserState
   }
 });

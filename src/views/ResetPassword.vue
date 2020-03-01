@@ -67,7 +67,7 @@ export default {
       const data = {
         email: this.email
       };
-      this.$store.dispatch("forgotPassword", data);
+      this.$store.users.dispatch("forgotPassword", data);
     },
 
     submitNewPassword() {
@@ -77,7 +77,7 @@ export default {
         newPassword: this.newPassword
       };
 
-      this.$store.dispatch("resetPassword", data);
+      this.$store.users.dispatch("resetPassword", data);
     }
   }
 };
