@@ -82,7 +82,7 @@ export default {
         context.commit("addTodo", result);
         context.commit("updatePoints");
       } catch (error) {
-        alert("Uh-oh! Something went wrong. Sorry!");
+        alert(`Uh-oh! Something went wrong. ${JSON.stringify(error)}`);
         throw new Error(error);
       }
     },
