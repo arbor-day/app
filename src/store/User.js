@@ -192,6 +192,7 @@ export default {
         } else {
           context.commit("setAuthd", false);
           context.commit("setUsername", null);
+          alert('Log-in to submit data')
         }
       } catch (error) {
         // throw new Error(error);

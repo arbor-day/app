@@ -145,11 +145,7 @@ export default {
     }
   },
   mounted() {
-    if(this.$store.state.users.user.authd){
-      this.getLocation();
-    } else {
-      alert("Log-in to submit!");
-    }
+    this.getLocation();
   }
 };
 </script>
