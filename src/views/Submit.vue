@@ -48,14 +48,23 @@
             @change="handleFileSelection"
           />
           <section class="submit__form-row">
-          <fieldset class="submit__form-fieldset">
-            <legend class="submit__form-input-label" for="description">description</legend>
-            <input class="submit__form-input" type="text" name="description" v-model="description" />
-          </fieldset>
+            <fieldset class="submit__form-fieldset">
+              <legend class="submit__form-input-label" for="description">
+                description
+              </legend>
+              <input
+                class="submit__form-input"
+                type="text"
+                name="description"
+                v-model="description"
+              />
+            </fieldset>
           </section>
         </form>
         <section class="submit__form-row submit__form-row--submit">
-          <button class="submit__form-btn" @click.prevent="submitForm">Submit</button>
+          <button class="submit__form-btn" @click.prevent="submitForm">
+            Submit
+          </button>
           <button class="submit__form-new-btn" @click="resetToCamera">
             ➕
           </button>
@@ -165,8 +174,6 @@ export default {
   z-index: 9999;
 }
 
-
-
 .submit__quick {
   width: 100%;
   height: 100%;
@@ -179,29 +186,28 @@ export default {
   margin: 0 auto;
 
   .upload-btn {
-      position:absolute;
-      width: 10rem;
-      height: 10rem;
-      border-radius: 50%;
-      font-size: 0.5rem;
-      font-size:4rem;
-      background-color: yellow;
-      border:6px solid white;
-    }
-
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    font-size: 0.5rem;
+    font-size: 4rem;
+    background-color: yellow;
+    border: 6px solid white;
+  }
 
   .form-group {
     display: flex;
     flex-direction: column;
     width: calc(100% - 1rem);
-    background-color: rgba(#00326F, 0.25);
+    background-color: rgba(#00326f, 0.25);
     position: absolute;
     bottom: 0.5rem;
     left: 0;
     z-index: 9999;
-    border:2px solid black;
-    border-radius:4px;
-    box-shadow:4px 4px 0 black;
+    border: 2px solid black;
+    border-radius: 4px;
+    box-shadow: 4px 4px 0 black;
   }
 
   .submit__form {
@@ -211,19 +217,18 @@ export default {
     }
 
     &-btn {
-      background-color:#00FD89;
+      background-color: #00fd89;
       color: black;
       font-size: 0.8rem;
-      border:4px solid white;
+      border: 4px solid white;
       padding: 0.1rem 1rem;
       letter-spacing: 0.25ch;
-      border-radius:4px;
+      border-radius: 4px;
       height: 48px;
       position: relative;
       transition: background-color 0.5s;
       display: inline-block;
     }
-
 
     &-flip-btn {
       width: 48px;
@@ -233,10 +238,10 @@ export default {
     &-new-btn {
       width: 48px;
       height: 48px;
-      background-color:yellow;
+      background-color: yellow;
       border-radius: 50%;
-      border:4px solid white;
-      color:black;
+      border: 4px solid white;
+      color: black;
     }
 
     &-row {
@@ -248,7 +253,7 @@ export default {
         align-items: center;
         justify-content: space-around;
         height: auto;
-        padding:0.5rem;
+        padding: 0.5rem;
       }
     }
 
@@ -271,7 +276,7 @@ export default {
       width: 100%;
       z-index: 9999;
       height: 1.6rem;
-      border-radius:2px;
+      border-radius: 2px;
     }
     &-input-file {
       display: none;
