@@ -117,7 +117,8 @@ export default {
         }, this.showError);
       }
     },
-    submitForm() {
+    submitForm(evt) {
+      evt.preventDefault();
       if (this.photoData) {
         const data = {
           latitude: this.latitude,

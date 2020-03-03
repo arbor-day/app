@@ -76,7 +76,10 @@ export default {
         };
 
         let result = await fetch(`${API_BASE_URL}/api/v1/locations`, options);
+        console.log(result);
         result = await result.json();
+        console.log(result);
+
         context.commit("addTodo", result);
         context.commit("updatePoints");
       } catch (error) {
