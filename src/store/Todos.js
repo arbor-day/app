@@ -44,11 +44,12 @@ export default {
           const photoOptions = {
             method: "GET"
           };
-          const encodedPhotoName = encodeURI(dataCopy.photo.name);
+
+          dataCopy.photo.name = encodeURI(`image_${Math.round((new Date()).getTime() / 1000)}`)          
           const photoType = dataCopy.photo.type;
 
           let photoData = await fetch(
-            `${API_BASE_URL}/moretrees-static/sign-s3?file-name=${encodedPhotoName}&file-type=${photoType}`,
+            `${API_BASE_URL}/moretrees-static/sign-s3?file-name=${dataCopy.photo.name}&file-type=${photoType}`,
             photoOptions
           );
           photoData = await photoData.json();
