@@ -62,7 +62,7 @@ export default {
           };
 
           await fetch(photoData.signedRequest, uploadOptions);
-          dataCopy.photo = photoData.url;
+          dataCopy.photo = String(photoData.url);
         }
 
         const options = {
@@ -77,8 +77,6 @@ export default {
 
         let result = await fetch(`${API_BASE_URL}/api/v1/locations`, options);
         result = await result.json();
-
-        alert("successfully added!");
         context.commit("addTodo", result);
         context.commit("updatePoints");
       } catch (error) {
